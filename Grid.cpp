@@ -61,8 +61,8 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
-		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
+		
+    	CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 }
 
@@ -135,8 +135,8 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
-
-
+			if (CellList[i][j]->HasLadder())
+				return CellList[i][j]->HasLadder();
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			
 
@@ -200,6 +200,7 @@ void Grid::UpdateInterface() const
 
 void Grid::PrintErrorMessage(string msg)
 {
+	msg = "error ";
 	pOut->PrintMessage(msg);
 	int x, y;
 	pIn->GetPointClicked(x, y);
