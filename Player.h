@@ -30,8 +30,16 @@ public:
 	int GetWallet() const;			// a getter for the wallet
 
 	int GetTurnCount() const;		// A getter for the turnCount
-
+	void SetTurnCount();            //setter to make turnCount = 0 after every three rolls
+	void IncrementturnCount();      // increment turnCount after each roll
 	///TODO: You can add setters and getters for data members here (if needed)
+
+	void SetjustRolledDiceNum(int diceNumber);   // setter for rolledDiceNum 
+	int  GetjustRolledDiceNum() const;           // getter for rolledDiceNum 
+
+	void SetstepCount(int CellNum);             // setter for stepCount of the player
+	int GetstepCount() const;                   // getter for stepCount of the player
+
 
 	// ====== Drawing Functions ======
 
