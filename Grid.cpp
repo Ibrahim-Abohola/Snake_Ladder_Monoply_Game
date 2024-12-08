@@ -61,8 +61,8 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
-		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
+		
+    	CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 }
 
@@ -135,28 +135,8 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
-
 			if (CellList[i][j]->HasLadder())
 				return CellList[i][j]->HasLadder();
-			///TODO: Check if CellList[i][j] has a ladder, if yes return it
-			
-
-		}
-		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
-	}
-	return NULL; // not found
-}
-
-Snake* Grid::GetNextSnake(const CellPosition& position)
-{
-	int startH = position.HCell(); // represents the start hCell in the current row to search for the ladder in
-	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
-	{
-		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
-		{
-
-			if (CellList[i][j]->HasSnake())
-				return CellList[i][j]->HasSnake();
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 
 
