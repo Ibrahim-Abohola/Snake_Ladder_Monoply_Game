@@ -7,6 +7,7 @@
 AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
+	x = false;
 }
 
 AddLadderAction::~AddLadderAction()
@@ -32,7 +33,13 @@ void AddLadderAction::ReadActionParameters()
 
 	///TODO: Make the needed validations on the read parameters
 
+
 	
+	Ladder* l = pGrid->GetNextLadder(startPos);
+
+	if (!l) x = true;
+
+	l = nullptr;
 
 	// Clear messages
 	pOut->ClearStatusBar();
@@ -40,26 +47,31 @@ void AddLadderAction::ReadActionParameters()
 
 
 // Execute the action
-void AddLadderAction::Execute() 
+void AddLadderAction::Execute()
 {
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
 	ReadActionParameters();
 
-	// Create a Ladder object with the parameters read from the user
-	Ladder * pLadder = new Ladder(startPos, endPos);
+	if (x) {
+		// Create a Ladder object with the parameters read from the user
+		Ladder* pLadder = new Ladder(startPos, endPos);
 
-	Grid * pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
+		Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-	// Add the card object to the GameObject of its Cell:
-	bool added = pGrid->AddObjectToCell(pLadder);
+		// Add the card object to the GameObject of its Cell:
+		bool added = pGrid->AddObjectToCell(pLadder);
 
-	// if the GameObject cannot be added
-	if (! added)
-	{
-		// Print an appropriate message
-		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		// if the GameObject cannot be added
+		if (!added)
+		{
+			// Print an appropriate message
+			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		}
+		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
+
 	}
-	// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
-
+	x = false;
 }
+
+

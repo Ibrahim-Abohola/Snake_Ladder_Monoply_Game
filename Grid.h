@@ -2,8 +2,9 @@
 
 #include "UI_Info.h"
 #include "DEFS.h"
-
 #include "Input.h"
+#include "Player.h"
+
 #include "Output.h"
 #include "CellPosition.h"
 
@@ -11,6 +12,7 @@
 class Cell;
 class GameObject;
 class Ladder;
+class Snake;
 class Card;
 class Player;
 

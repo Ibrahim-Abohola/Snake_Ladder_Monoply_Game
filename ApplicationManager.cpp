@@ -2,6 +2,7 @@
 
 #include "Grid.h"
 #include "AddLadderAction.h"
+#include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
 
@@ -58,6 +59,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 	case ADD_LADDER:
 		pAct = new AddLadderAction(this);
+		break;
+	case ADD_SNAKE:
+		// create an object of AddCardAction here
+		pAct = new AddSnakeAction(this);
 		break;
 
 	case ADD_CARD:
