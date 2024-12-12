@@ -2,6 +2,7 @@
 
 #include "GameObject.h"
 
+
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum),justRolledDiceNum(0)
 {
 	this->pCell = pCell;
@@ -12,7 +13,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 
 // ====== Setters and Getters ======
 
-void Player::SetCell(Cell * cell)
+void Player::SetCell(Cell* cell)
 {
 	pCell = cell;
 }
@@ -28,6 +29,7 @@ void Player::SetWallet(int wallet)
 		this->wallet = 0;
 		return;
 	}
+
 	this->wallet = wallet; 
 	// Make any needed validations
 }
@@ -89,7 +91,7 @@ void Player::ClearDrawing(Output* pOut) const
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
 
 	CellPosition CellPos = pCell->GetCellPosition();
-	
+
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
 	pOut->DrawPlayer(CellPos, playerNum, cellColor);
 
@@ -97,7 +99,7 @@ void Player::ClearDrawing(Output* pOut) const
 
 // ====== Game Functions ======
 
-void Player::Move(Grid * pGrid, int diceNumber)
+void Player::Move(Grid* pGrid, int diceNumber)
 {
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
@@ -150,9 +152,9 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	}
 }
 
-void Player::AppendPlayerInfo(string & playersInfo) const
+void Player::AppendPlayerInfo(string& playersInfo) const
 {
-	playersInfo += "P" + to_string(playerNum) + "(" ;
+	playersInfo += "P" + to_string(playerNum) + "(";
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
 }

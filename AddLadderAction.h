@@ -21,6 +21,13 @@ public:
 	virtual void Execute(); // Creates a new Ladder Object 
 	                        // then Sets this Ladder object to the GameObject Pointer of its Cell
 	
+	CellPosition GetstartPos();   //startPos getter
+
+	CellPosition GetendPos();	  //endPos getters
+
+	void SetstartPos(int x, int y);   //startPos getter
+
+	void SetendPos(int x, int y);	  //endPos getters
 
 	virtual ~AddLadderAction(); // Virtual Destructor
 

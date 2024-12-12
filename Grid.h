@@ -2,8 +2,9 @@
 
 #include "UI_Info.h"
 #include "DEFS.h"
-
 #include "Input.h"
+#include "Player.h"
+
 #include "Output.h"
 #include "CellPosition.h"
 
@@ -11,6 +12,7 @@
 class Cell;
 class GameObject;
 class Ladder;
+class Snake;
 class Card;
 class Player;
 
@@ -80,5 +82,9 @@ public:
 									    // We added this function once here because it is used many times by other classes
 
 	~Grid(); // A destructor for any needed deallcations
+
+	//============================================================================//
+	bool ladder_in_the_colom(CellPosition start, CellPosition end);
+
 };
 

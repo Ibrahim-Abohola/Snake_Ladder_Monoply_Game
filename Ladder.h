@@ -17,6 +17,10 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to ladder's end cell
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
+	
+	//virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
+
+	//virtual void Save(ofstream& OutFile) ;// Loads and Reads the GameObject parameters from the file
 
 	virtual ~Ladder(); // Virtual destructor
 };

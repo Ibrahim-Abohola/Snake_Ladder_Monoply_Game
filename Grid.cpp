@@ -135,10 +135,11 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
-			if (CellList[i][j]->HasLadder())
-				return CellList[i][j]->HasLadder();
+			
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			
+			if (CellList[i][j]->HasLadder())
+				return CellList[i][j]->HasLadder();
 
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
@@ -227,4 +228,23 @@ Grid::~Grid()
 	{
 		delete PlayerList[i];
 	}
+}
+
+
+
+
+bool Grid::ladder_in_the_colom(CellPosition start, CellPosition end)
+{
+	Ladder* l = NULL;
+
+	for (int i = 8; i >= 0; i--) {
+		if (dynamic_cast<Ladder*>(CellList[i][start.HCell()]->HasLadder()) != NULL) {
+
+			//l = CellList[i][start.HCell()]->HasLadder();
+			return true;
+		}
+	} // a comment for ibrahim the function work but can't draw in the same colomn 2 ladders or more  
+
+
+	return false;
 }

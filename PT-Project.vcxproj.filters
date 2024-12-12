@@ -7,9 +7,6 @@
     <Filter Include="CMUgraphicsLib\JPEG">
       <UniqueIdentifier>{74881736-22be-4b44-90b6-09a29eb1aa85}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{993adb1b-e6f5-4951-a441-ab84b1ccd65b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ApplicationManager">
       <UniqueIdentifier>{00edee6d-09c6-41dc-9411-2fe37dad3b78}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="GUIClasses">
       <UniqueIdentifier>{03fd4e0d-92e0-4271-bb9b-d6e9f21ec35f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{993adb1b-e6f5-4951-a441-ab84b1ccd65b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +184,12 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSnakeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -295,5 +301,11 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Snake.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSnakeAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
