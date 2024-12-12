@@ -4,8 +4,7 @@
 
 class CardThree : public Card
 {
-	// CardThree Parameters:
-	int walletAmount; // the wallet value to decrease from the player
+	//no parameters
 
 public:
 	CardThree(const CellPosition& pos); // A Constructor takes card position

@@ -28,6 +28,6 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	// 2-Move the player forward to the start of the next ladder. (If no ladders ahead, do
 	//nothing)
 	Ladder * L = pGrid->GetNextLadder((pPlayer->GetCell())->GetCellPosition());
-	pGrid->UpdatePlayerCell(pPlayer,L->GetEndPosition());
+	pGrid->UpdatePlayerCell(pPlayer,L->GetEndPosition());//not sure if i should use this function or move ------>>>>please review it
 	
 }

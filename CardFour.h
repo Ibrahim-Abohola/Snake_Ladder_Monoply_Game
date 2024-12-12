@@ -3,8 +3,7 @@
 #include "Card.h"
 class CardFour : public Card
 {
-	// CardFour Parameters:
-	int walletAmount; // the wallet value to decrease from the player
+	//no parameters
 
 public:
 	CardFour(const CellPosition& pos); // A Constructor takes card position
