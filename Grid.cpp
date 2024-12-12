@@ -229,3 +229,22 @@ Grid::~Grid()
 		delete PlayerList[i];
 	}
 }
+
+
+
+
+bool Grid::ladder_in_the_colom(CellPosition start, CellPosition end)
+{
+	Ladder* l = NULL;
+
+	for (int i = 8; i >= 0; i--) {
+		if (dynamic_cast<Ladder*>(CellList[i][start.HCell()]->HasLadder()) != NULL) {
+
+			//l = CellList[i][start.HCell()]->HasLadder();
+			return true;
+		}
+	} // a comment for ibrahim the function work but can't draw in the same colomn 2 ladders or more  
+
+
+	return false;
+}

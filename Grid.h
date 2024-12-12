@@ -82,5 +82,9 @@ public:
 									    // We added this function once here because it is used many times by other classes
 
 	~Grid(); // A destructor for any needed deallcations
+
+	//============================================================================//
+	bool ladder_in_the_colom(CellPosition start, CellPosition end);
+
 };
 

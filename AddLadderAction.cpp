@@ -3,16 +3,38 @@
 #include "Input.h"
 #include "Output.h"
 #include "Ladder.h"
-
+bool x;
 AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
-	x = false;
 }
 
 AddLadderAction::~AddLadderAction()
 {
 }
+
+CellPosition AddLadderAction::GetstartPos()
+{
+	return startPos;
+}
+
+CellPosition AddLadderAction::GetendPos()
+{
+	return endPos;
+}
+
+void AddLadderAction::SetstartPos(int x , int y)
+{
+	startPos.SetVCell(x);
+	startPos.SetHCell(y);
+}
+
+void AddLadderAction::SetendPos(int x, int y)
+{
+	endPos.SetVCell(x);
+	endPos.SetHCell(y);
+}
+
 
 void AddLadderAction::ReadActionParameters() 
 {	
@@ -33,16 +55,9 @@ void AddLadderAction::ReadActionParameters()
 
 	///TODO: Make the needed validations on the read parameters
 
+	x = pGrid->ladder_in_the_colom(startPos, endPos);
 
-	
-	Ladder* l = pGrid->GetNextLadder(startPos);
-
-	if (!l) x = true;
-
-	l = nullptr;
-
-	// Clear messages
-	pOut->ClearStatusBar();
+	//pOut->ClearStatusBar();
 }
 
 
@@ -53,7 +68,8 @@ void AddLadderAction::Execute()
 	// and hence initializes its data members
 	ReadActionParameters();
 
-	if (x) {
+	if (!x) {
+
 		// Create a Ladder object with the parameters read from the user
 		Ladder* pLadder = new Ladder(startPos, endPos);
 
@@ -71,7 +87,4 @@ void AddLadderAction::Execute()
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
 
 	}
-	x = false;
 }
-
-
