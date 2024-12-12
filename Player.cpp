@@ -2,7 +2,8 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum), justRolledDiceNum(0)
+
+Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum),justRolledDiceNum(0)
 {
 	this->pCell = pCell;
 	SetTurnCount();
@@ -28,7 +29,8 @@ void Player::SetWallet(int wallet)
 		this->wallet = 0;
 		return;
 	}
-	this->wallet = wallet;
+
+	this->wallet = wallet; 
 	// Make any needed validations
 }
 
@@ -112,7 +114,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (GetTurnCount() == 3) {
 		SetTurnCount();
-		int wallet = GetWallet() + diceNumber * 10;
+		int wallet = GetWallet()  + diceNumber * 10;
 		SetWallet(wallet);
 		return;
 	}
