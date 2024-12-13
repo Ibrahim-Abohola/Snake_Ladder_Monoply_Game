@@ -199,6 +199,12 @@
     <ClCompile Include="CardSix.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="InputDiceValue .cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="New.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -324,6 +330,12 @@
     </ClInclude>
     <ClInclude Include="CardSix.h">
       <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="inputdicevalue.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="New.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
