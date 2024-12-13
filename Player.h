@@ -40,6 +40,7 @@ public:
 	void SetstepCount(int CellNum);             // setter for stepCount of the player
 	int GetstepCount() const;                   // getter for stepCount of the player
 
+	int GetPlayerNum() const;
 
 	// ====== Drawing Functions ======
 
