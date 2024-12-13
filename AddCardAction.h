@@ -11,7 +11,7 @@ class AddCardAction : public Action
 	// Note: These parameters should be read in ReadActionParameters()
 	
 public:
-	AddCardAction(ApplicationManager *pApp); // A Constructor
+	AddCardAction(ApplicationManager * pApp); // A Constructor
 		
 	virtual void ReadActionParameters(); // Reads AddCardAction action parameters (cardNumber, cardPosition)
 	

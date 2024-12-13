@@ -337,7 +337,7 @@
     <ClInclude Include="CardThrteen.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="CardTweleve.h">
+    <ClInclude Include="CardTwelve.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
     <ClInclude Include="Card10__13.h">

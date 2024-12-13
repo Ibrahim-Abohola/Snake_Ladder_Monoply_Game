@@ -202,7 +202,7 @@
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardTen.h" />
     <ClInclude Include="CardThrteen.h" />
-    <ClInclude Include="CardTweleve.h" />
+    <ClInclude Include="CardTwelve.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

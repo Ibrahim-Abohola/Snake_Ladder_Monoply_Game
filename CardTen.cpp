@@ -63,10 +63,8 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardTen: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

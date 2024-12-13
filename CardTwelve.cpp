@@ -1,4 +1,4 @@
-#include "CardTweleve.h"
+#include "CardTwelve.h"
 
 int CardTwelve::CardPrice = 0;
 int CardTwelve::Fees = 0;
@@ -63,10 +63,8 @@ void CardTwelve::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardTwelve: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

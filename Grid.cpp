@@ -83,6 +83,7 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 // ========= Setters and Getters Functions =========
 
 
+
 Input * Grid::GetInput() const
 {
 	return pIn;
@@ -201,7 +202,6 @@ void Grid::UpdateInterface() const
 
 void Grid::PrintErrorMessage(string msg)
 {
-	msg = "error ";
 	pOut->PrintMessage(msg);
 	int x, y;
 	pIn->GetPointClicked(x, y);
