@@ -73,6 +73,9 @@ void Player::SetstepCount(int CellNum) {
 int Player::GetstepCount() const {
 	return stepCount;
 }
+int Player::GetPlayerNum() const {
+	return playerNum;
+}
 
 // ====== Drawing Functions ======
 
