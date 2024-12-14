@@ -5,6 +5,8 @@
 #include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
+#include "SaveGridAction.h"
+#include "OpenGridAction.h"
 #include "inputdicevalue.h"
 
 ///TODO: Add #include for all action types
@@ -69,6 +71,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
+		break;
+	case SAVE_GRID:
+		// create an object of AddCardAction here
+		pAct = new SaveGridAction(this);
+		break;
+	case OPEN_GRID:
+		// create an object of AddCardAction here
+		pAct = new OpenGridAction(this);
 		break;
 
 	case EXIT:

@@ -18,9 +18,9 @@ public:
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 	
-	//virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
+	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
 
-	//virtual void Save(ofstream& OutFile) ;// Loads and Reads the GameObject parameters from the file
+	virtual void Save(ofstream& OutFile) ;// Loads and Reads the GameObject parameters from the file
 
 	virtual ~Ladder(); // Virtual destructor
 };

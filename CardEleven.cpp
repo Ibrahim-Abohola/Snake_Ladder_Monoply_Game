@@ -1,8 +1,14 @@
 #include "CardEleven.h"
 
+
+
 int CardEleven::CardPrice = 0;
 int CardEleven::Fees = 0;
 Player* CardEleven::CardOwner = NULL;
+int CardEleven::Saved = 0;
+int CardEleven::Loaded = 0;
+
+
 
 CardEleven::CardEleven(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
@@ -12,6 +18,39 @@ CardEleven::CardEleven(const CellPosition& pos) : Card10__13(pos) // set the cel
 
 CardEleven::~CardEleven(void)
 {
+}
+
+
+void CardEleven::Save(ofstream& OutFile) {
+	//special card 
+	//we should save its fees and price only once the first time card of that type appear in the grid
+	if (Saved == 0)
+	{
+		OutFile << GetCardNumber() << " " << position.GetCellNum() << " " << CardPrice << " " << Fees << endl;
+		Saved++;
+	}
+	else
+		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+
+}
+
+void CardEleven::Load(ifstream& InFile) {
+	int price, pos, fees;
+	//special card 
+	//we should load its fees and price only once the first time card of that type appear in the grid
+	if (Loaded == 0) {
+		InFile >> pos >> price >> fees;
+		Loaded++;
+		position = position.GetCellPositionFromNum(pos);
+		SetCardPrice(price);
+		SetFees(fees);
+	}
+	else
+	{
+		InFile >> pos;
+		position = position.GetCellPositionFromNum(pos);
+	}
+
 }
 
 void CardEleven::SetCardPrice(int price) {
@@ -34,12 +73,16 @@ bool CardEleven::IsSet() {
 
 }
 
-Player* CardEleven::SetOwner(Player* pPlayer) {
+
+Player * CardEleven::SetOwner(Player* pPlayer) {
+
 	CardOwner = pPlayer;
 	return CardOwner;
 }
 
-Player* CardEleven::GetOwner() {
+
+Player * CardEleven::GetOwner() {
+
 	return CardOwner;
 }
 
@@ -63,10 +106,10 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardEleven: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
+
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
+
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

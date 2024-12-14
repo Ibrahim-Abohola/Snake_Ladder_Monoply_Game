@@ -12,10 +12,17 @@ class Player
 
 	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
 	int wallet;		       // player's wallet (how many coins he has -- integer)
-	int justRolledDiceNum; // the current dice number which is just rolled by the player
+	int justRolledDiceNum; // the current dice number which is just rolled by the players
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	// and reset again when reached 3
 	// it is used to indicate when to move and when to add to your wallet
+
+	int AttackCount;  //counts the number of attacks the player has done
+	int SpecialAttackNum;  //a number the user can choose from 1 to 4 
+	int BurnCount;     //count the turns the player will be burned (deduct 20 from his wallet for 3 turns) 
+	int PoisonCount;   //count the turns the player will be poisoned (deduct 1 from his rolldice for 5 turns)
+	bool Skip;   //used when the player should skip next turn
+	bool UsedAttack[4];
 
 public:
 
@@ -30,7 +37,7 @@ public:
 	int GetWallet() const;			// a getter for the wallet
 
 	int GetTurnCount() const;		// A getter for the turnCount
-	void SetTurnCount();            //setter to make turnCount = 0 after every three rolls
+	void SetTurnCount(int);            //setter to make turnCount = 0 after every three rolls
 	void IncrementturnCount();      // increment turnCount after each roll
 	///TODO: You can add setters and getters for data members here (if needed)
 
@@ -49,6 +56,16 @@ public:
 	void ClearDrawing(Output* pOut) const;	// Clears the Player's Circle from its current cell
 
 	// ====== Game Functions ======
+
+	void SetSkipped();
+	void IsSkipped(Grid*);
+	void SetBurnCount();
+	bool IsBurned();
+	void SetPoisonCount();
+	bool IsPoisoned();
+	void IsLightned(Grid*);
+	void ChooseAttack(Grid*);
+	void UseAttack(int,Grid*);
 
 	void Move(Grid* pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
 	// and Applies the Game Object's effect (if any) of the end reached cell 

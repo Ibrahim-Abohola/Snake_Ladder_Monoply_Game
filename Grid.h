@@ -8,6 +8,7 @@
 #include "Output.h"
 #include "CellPosition.h"
 
+
 // forward declarations (the includes are in the cpp)
 class Cell;
 class GameObject;
@@ -65,8 +66,10 @@ public:
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
+
 	// ========= Other Getters =========
 	
+	Player* GetPlayerWithNumber(int);
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	Snake* GetNextSnake(const CellPosition& position);
@@ -83,10 +86,17 @@ public:
 
 	void Reset();
 
+	void LightningAttack(Player* attacker);
+
+	void SaveAllLadders(ofstream& OutFile);
+	void SaveAllSnakes(ofstream& OutFile);
+	void SaveAllCards(ofstream& OutFile);
+
+	void ClearGrid(); //function that clears the grid from all its game objects to be used when loading a grid or anywhere else
+
 	~Grid(); // A destructor for any needed deallcations
 
 	//============================================================================//
-	bool ladder_in_the_colom(CellPosition start, CellPosition end);
-
+	
 };
 

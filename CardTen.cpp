@@ -3,6 +3,8 @@
 int CardTen::CardPrice = 0;
 int CardTen::Fees = 0;
 Player * CardTen::CardOwner = NULL;
+int CardTen::Saved = 0;
+int CardTen::Loaded = 0;
 
 CardTen::CardTen(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
@@ -13,6 +15,40 @@ CardTen::CardTen(const CellPosition& pos) : Card10__13(pos) // set the cell posi
 CardTen::~CardTen(void)
 {
 }
+
+
+void CardTen::Save(ofstream& OutFile) {
+	//special card 
+	//we should save its fees and price only once the first time card of that type appear in the grid
+	if (Saved == 0)  
+	{
+		OutFile << GetCardNumber() << " " << position.GetCellNum() << " " << CardPrice << " " << Fees << endl;
+		Saved++;  
+	}
+	else
+		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+
+}
+
+void CardTen::Load(ifstream& InFile) {
+	int price, pos, fees;
+	//special card 
+	//we should load its fees and price only once the first time card of that type appear in the grid
+	if (Loaded == 0) {
+		InFile >> pos >> price >> fees;
+		Loaded++;
+		position = position.GetCellPositionFromNum(pos);
+		SetCardPrice(price);
+		SetFees(fees);
+	}
+	else
+	{
+		InFile >> pos;
+		position = position.GetCellPositionFromNum(pos);
+	}
+	
+}
+
 
 void CardTen::SetCardPrice(int price) {
 
@@ -63,10 +99,10 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardTen: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
+
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
-		pIn->GetPointClicked(x, y);
+
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}
