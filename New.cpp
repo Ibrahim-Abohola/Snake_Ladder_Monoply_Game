@@ -16,13 +16,14 @@ void New::ReadActionParameters()
 
 void New::Execute()
 {
-	Output* Op = NULL;
-	Input* In = NULL;
-
-	///TODO: Implement this function	
-		(pManager->GetGrid())->~Grid();
-		Grid* g = new Grid(In,Op);//not sure
-
+	Cell* c = new Cell(8,0);
+	for (int i = 0; i < MaxPlayerCount;i++) {
+		pManager->GetGrid()->GetCurrentPlayer()->ClearDrawing(pManager->GetGrid()->GetOutput());
+		pManager->GetGrid()->GetCurrentPlayer()->SetCell(c);
+		pManager->GetGrid()->GetCurrentPlayer()->Draw(pManager->GetGrid()->GetOutput());
+		pManager->GetGrid()->AdvanceCurrentPlayer();
+	}
+	pManager->GetGrid()->Reset();
 }
 
 New::~New()

@@ -228,6 +228,25 @@ void Grid::PrintErrorMessage(string msg)
 }
 
 
+void Grid::Reset()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // left to right
+		{
+			if (CellList[i][j]->HasCard()) {
+				int num=CellList[i][j]->HasCard()->GetCardNumber();
+				if (num >= 10 && num <= 13)
+				{
+					CellList[i][j]->HasCard()->~Card();
+			}
+			
+			
+			}
+		}
+	}
+}
+
 Grid::~Grid()
 {
 	delete pIn;

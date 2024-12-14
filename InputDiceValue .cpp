@@ -19,7 +19,7 @@ void InputDiceValue::Execute()
 	int x, y;
 	string msg;
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-	(pManager->GetGrid())->GetInput()->GetInteger((pManager->GetGrid())->GetOutput());
+	
 	
 // == Here are some guideline steps (numbered below) to implement this function ==
 
@@ -36,11 +36,11 @@ void InputDiceValue::Execute()
 		(pManager->GetGrid())->GetInput()->GetPointClicked(x, y);
 		if (diceNumber >= 0 && diceNumber <= 6) {
 			// 3- Get the "current" player from pGrid
-			Player* curp = (pManager->GetGrid())->GetCurrentPlayer();
+			(pManager->GetGrid())->GetCurrentPlayer()->Move((pManager->GetGrid()), diceNumber);
 			// 4- Move the currentPlayer using function Move of class player
-			curp->Move((pManager->GetGrid()), diceNumber);
+
 			// 5- Advance the current player number of pGrid
-			(pManager->GetGrid())->GetCurrentPlayer();
+			(pManager->GetGrid())->AdvanceCurrentPlayer();
 			(pManager->GetGrid())->GetInput()->GetPointClicked(x, y);
 		}
 	}
