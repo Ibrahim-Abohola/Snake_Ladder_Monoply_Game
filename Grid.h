@@ -79,7 +79,9 @@ public:
 	                                    //       and the cards/snakes/ladders positions do NOT change already in Play Mode
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
-									    // We added this function once here because it is used many times by other classes
+		// We added this function once here because it is used many times by other classes
+
+	void Reset();
 
 	~Grid(); // A destructor for any needed deallcations
 
