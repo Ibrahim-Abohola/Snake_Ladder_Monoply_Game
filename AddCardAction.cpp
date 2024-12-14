@@ -66,10 +66,10 @@ void AddCardAction::Execute()
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
 	{
-	case 1:
+	/*case 1:
 		pCard = new CardOne(cardPosition);
 		break;
-	/*case 2:
+	case 2:
 		pCard = new CardTwo(cardPosition);
 		break;
 	case 3:

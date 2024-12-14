@@ -133,6 +133,7 @@
     <ClCompile Include="AddLadderAction.cpp" />
     <ClCompile Include="AddSnakeAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Card10__13 .cpp" />
     <ClCompile Include="CardEleven.cpp" />
@@ -179,14 +180,20 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="Fire.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Ice.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Ladder.cpp" />
+    <ClCompile Include="Lightning.cpp" />
+    <ClCompile Include="OpenGridAction.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Poison.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
+    <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +202,7 @@
     <ClInclude Include="AddLadderAction.h" />
     <ClInclude Include="AddSnakeAction.h" />
     <ClInclude Include="ApplicationManager.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Card10__13.h" />
     <ClInclude Include="CardEleven.h" />
@@ -226,13 +234,19 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Fire.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="Ice.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Ladder.h" />
+    <ClInclude Include="Lightning.h" />
+    <ClInclude Include="OpenGridAction.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Poison.h" />
     <ClInclude Include="RollDiceAction.h" />
+    <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>

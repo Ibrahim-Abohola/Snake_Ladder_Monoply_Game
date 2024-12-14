@@ -1,4 +1,6 @@
 #include "Ladder.h"
+#include <fstream>
+
 
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
@@ -39,6 +41,19 @@ CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
 }
+
+void Ladder::Save(ofstream & OutFile) {
+
+	OutFile << position.GetCellNum()<<" "<<endCellPos.GetCellNum() << endl;  //writing ladder information into the file
+}
+
+void Ladder::Load(ifstream& InFile) {
+	int startcell,endcell;
+	InFile >> startcell >> endcell;
+	position = position.GetCellPositionFromNum(startcell);
+	endCellPos = endCellPos.GetCellPositionFromNum(endcell);
+}
+
 
 Ladder::~Ladder()
 {

@@ -5,6 +5,8 @@
 #include "Ladder.h"
 #include "Card.h"
 #include "Player.h"
+#include <fstream>
+
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -70,7 +72,7 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 {
 	// Clear the player's circle from the old cell position
 	player->ClearDrawing(pOut);
-
+	player->Move(this, 5);
 	// Set the player's CELL with the new position
 	Cell * newCell = CellList[newPosition.VCell()][newPosition.HCell()];
 	player->SetCell(newCell);	
@@ -126,6 +128,10 @@ void Grid::AdvanceCurrentPlayer()
 Player * Grid::GetCurrentPlayer() const
 {
 	return PlayerList[currPlayerNumber];
+}
+
+Player* Grid::GetPlayerWithNumber(int number) {
+	return PlayerList[number];
 }
 
 Ladder * Grid::GetNextLadder(const CellPosition & position)
@@ -208,6 +214,77 @@ void Grid::PrintErrorMessage(string msg)
 	pOut->ClearStatusBar();
 }
 
+void Grid::LightningAttack(Player* attacker) {
+	for (int i = 0;i < MaxPlayerCount;i++) {
+		if (PlayerList[i] != attacker)
+			PlayerList[i]->IsLightned(this);
+	}
+}
+
+
+void Grid::SaveAllLadders(ofstream & OutFile) {
+	int count_ladders = 0;
+	for (int i = 0;i < NumVerticalCells;i++) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			if (CellList[i][j]->HasLadder())
+				count_ladders++;
+		}
+	}
+	OutFile << count_ladders<<endl;
+	for (int i = 0;i < NumVerticalCells;i++) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			if (CellList[i][j]->HasLadder()) {
+				CellList[i][j]->GetGameObject()->Save(OutFile);
+			}
+		}
+	}
+}
+void Grid::SaveAllSnakes(ofstream& OutFile) {
+	int count_snakes = 0;
+	for (int i = 0;i < NumVerticalCells;i++) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			if (CellList[i][j]->HasSnake())
+				count_snakes++;
+		}
+	}
+	OutFile << count_snakes<<endl;
+	for (int i = 0;i < NumVerticalCells;i++) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			if (CellList[i][j]->HasSnake()) {
+				CellList[i][j]->GetGameObject()->Save(OutFile);
+			}
+		}
+	}
+}
+void Grid::SaveAllCards(ofstream& OutFile) {
+	int count_cards = 0;
+	for (int i = 0;i < NumVerticalCells;i++) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			if (CellList[i][j]->HasCard())
+				count_cards++;
+		}
+	}
+	OutFile << count_cards<<endl;
+	for (int i = 0;i < NumVerticalCells;i++) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			if (CellList[i][j]->HasCard()) {
+				CellList[i][j]->GetGameObject()->Save(OutFile);
+			}
+		}
+	}
+}
+
+void Grid::ClearGrid() {
+	
+	for (int i = NumVerticalCells - 1;i >=0;i--) {
+		for (int j = 0;j < NumHorizontalCells;j++) {
+			RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+		}
+	}
+	UpdateInterface();
+}
+
+
 
 Grid::~Grid()
 {
@@ -232,19 +309,3 @@ Grid::~Grid()
 
 
 
-
-bool Grid::ladder_in_the_colom(CellPosition start, CellPosition end)
-{
-	Ladder* l = NULL;
-
-	for (int i = 8; i >= 0; i--) {
-		if (dynamic_cast<Ladder*>(CellList[i][start.HCell()]->HasLadder()) != NULL) {
-
-			//l = CellList[i][start.HCell()]->HasLadder();
-			return true;
-		}
-	} // a comment for ibrahim the function work but can't draw in the same colomn 2 ladders or more  
-
-
-	return false;
-}

@@ -3,6 +3,8 @@
 int CardTwelve::CardPrice = 0;
 int CardTwelve::Fees = 0;
 Player* CardTwelve::CardOwner = NULL;
+int CardTwelve::Saved = 0;
+int CardTwelve::Loaded = 0;
 
 CardTwelve::CardTwelve(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
@@ -12,6 +14,38 @@ CardTwelve::CardTwelve(const CellPosition& pos) : Card10__13(pos) // set the cel
 
 CardTwelve::~CardTwelve(void)
 {
+}
+
+void CardTwelve::Save(ofstream& OutFile) {
+	//special card 
+	//we should save its fees and price only once the first time card of that type appear in the grid
+	if (Saved == 0)
+	{
+		OutFile << GetCardNumber() << " " << position.GetCellNum() << " " << CardPrice << " " << Fees << endl;
+		Saved++;
+	}
+	else
+		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+
+}
+
+void CardTwelve::Load(ifstream& InFile) {
+	int price, pos, fees;
+	//special card 
+	//we should load its fees and price only once the first time card of that type appear in the grid
+	if (Loaded == 0) {
+		InFile >> pos >> price >> fees;
+		Loaded++;
+		position = position.GetCellPositionFromNum(pos);
+		SetCardPrice(price);
+		SetFees(fees);
+	}
+	else
+	{
+		InFile >> pos;
+		position = position.GetCellPositionFromNum(pos);
+	}
+
 }
 
 void CardTwelve::SetCardPrice(int price) {

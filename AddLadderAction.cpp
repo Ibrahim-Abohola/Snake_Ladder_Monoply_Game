@@ -38,6 +38,7 @@ void AddLadderAction::SetendPos(int x, int y)
 
 void AddLadderAction::ReadActionParameters() 
 {	
+
 	// Get a Pointer to the Input / Output Interfaces
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
@@ -55,7 +56,6 @@ void AddLadderAction::ReadActionParameters()
 
 	///TODO: Make the needed validations on the read parameters
 
-	x = pGrid->ladder_in_the_colom(startPos, endPos);
 
 	//pOut->ClearStatusBar();
 }
