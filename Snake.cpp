@@ -34,6 +34,7 @@ CellPosition Snake::GetEndPosition() const
 	return endCellPos;
 }
 
+
 void Snake::Save(ofstream& OutFile) {
 
 	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;  //writing ladder information into the file

@@ -28,9 +28,11 @@
     <Filter Include="Player">
       <UniqueIdentifier>{993adb1b-e6f5-4951-a441-ab84b1ccd65b}</UniqueIdentifier>
     </Filter>
+
     <Filter Include="SpecialAttacks">
       <UniqueIdentifier>{9dc762fd-18c8-49ba-bf4d-2a44c938c948}</UniqueIdentifier>
     </Filter>
+
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
@@ -184,6 +186,7 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
+
     <ClCompile Include="CardTwo.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
@@ -205,12 +208,14 @@
     <ClCompile Include="New.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+
     <ClCompile Include="Snake.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="AddSnakeAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+
     <ClCompile Include="CardEleven.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
@@ -260,6 +265,7 @@
     <ClCompile Include="SwitchToPlay.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -392,6 +398,7 @@
     <ClInclude Include="New.h">
       <Filter>Actions</Filter>
     </ClInclude>
+
     <ClInclude Include="Snake.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -444,5 +451,6 @@
     <ClInclude Include="SwitchToPlay.h">
       <Filter>Actions</Filter>
     </ClInclude>
+
   </ItemGroup>
 </Project>

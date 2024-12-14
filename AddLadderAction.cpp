@@ -57,6 +57,7 @@ void AddLadderAction::ReadActionParameters()
 	///TODO: Make the needed validations on the read parameters
 
 
+
 	//pOut->ClearStatusBar();
 }
 

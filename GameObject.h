@@ -25,7 +25,6 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer) = 0;  // Applys the effect of the GameObject on the passed Player
 	                                                       // (The effect depends on the GameObject type, so virtual)
 	                                                       // For example, applying a ladder is by moving player up, and so on
-	
 
 	// The following functions are examples of what should be supported by the GameObject class
 	// They should be overridden by each inherited class

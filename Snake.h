@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
+
 #include <fstream>
 
 
@@ -18,9 +19,11 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to Snake's end cell
 
+
 	virtual void Load(ifstream& Infile) ;// Saves the GameObject parameters to the file
 
 	virtual void Save(ofstream& OutFile) ;// Loads and Reads the GameObject parameters from the file
+
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 

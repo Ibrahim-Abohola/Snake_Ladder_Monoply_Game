@@ -24,6 +24,7 @@ class Player
 	bool Skip;   //used when the player should skip next turn
 	bool UsedAttack[4];
 
+
 public:
 
 	Player(Cell* pCell, int playerNum); // Constructor making any needed initializations
@@ -57,6 +58,7 @@ public:
 
 	// ====== Game Functions ======
 
+
 	void SetSkipped();
 	void IsSkipped(Grid*);
 	void SetBurnCount();
@@ -67,12 +69,13 @@ public:
 	void ChooseAttack(Grid*);
 	void UseAttack(int,Grid*);
 
+
 	void Move(Grid* pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
 	// and Applies the Game Object's effect (if any) of the end reached cell 
 	// for example, if the end cell contains a ladder, take it
 
 	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
-	// for example: P0(wallet, turnCount)
+	// for example: P0(wallet,Â turnCount)
 
 };
 

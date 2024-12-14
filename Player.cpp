@@ -7,6 +7,7 @@
 #include "Lightning.h"
 #include "Poison.h"
 
+
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum),justRolledDiceNum(0)
 {
 	this->pCell = pCell;
@@ -243,6 +244,7 @@ void Player::UseAttack(int attacktype,Grid* pGrid) {
 	}
 
 }
+
 void Player::Move(Grid* pGrid, int diceNumber)
 {
 
