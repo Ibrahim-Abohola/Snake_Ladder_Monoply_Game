@@ -1,11 +1,14 @@
 #include "CardEleven.h"
 
 
+
 int CardEleven::CardPrice = 0;
 int CardEleven::Fees = 0;
 Player* CardEleven::CardOwner = NULL;
 int CardEleven::Saved = 0;
 int CardEleven::Loaded = 0;
+
+
 
 CardEleven::CardEleven(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
@@ -16,6 +19,7 @@ CardEleven::CardEleven(const CellPosition& pos) : Card10__13(pos) // set the cel
 CardEleven::~CardEleven(void)
 {
 }
+
 
 void CardEleven::Save(ofstream& OutFile) {
 	//special card 
@@ -49,7 +53,6 @@ void CardEleven::Load(ifstream& InFile) {
 
 }
 
-
 void CardEleven::SetCardPrice(int price) {
 
 	if (price <= 0)  //validation
@@ -70,12 +73,16 @@ bool CardEleven::IsSet() {
 
 }
 
+
 Player * CardEleven::SetOwner(Player* pPlayer) {
+
 	CardOwner = pPlayer;
 	return CardOwner;
 }
 
+
 Player * CardEleven::GetOwner() {
+
 	return CardOwner;
 }
 
@@ -99,8 +106,10 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardEleven: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
+
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
+
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

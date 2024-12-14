@@ -1,11 +1,13 @@
 #include "CardThrteen.h"
 
 
+
 int CardThrteen::CardPrice = 0;
 int CardThrteen::Fees = 0;
 Player* CardThrteen::CardOwner = NULL;
 int CardThrteen::Saved = 0;
 int CardThrteen::Loaded = 0;
+
 
 CardThrteen::CardThrteen(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
@@ -16,6 +18,7 @@ CardThrteen::CardThrteen(const CellPosition& pos) : Card10__13(pos) // set the c
 CardThrteen::~CardThrteen(void)
 {
 }
+
 
 void CardThrteen::Save(ofstream& OutFile) {
 	//special card 
@@ -48,6 +51,7 @@ void CardThrteen::Load(ifstream& InFile) {
 	}
 
 }
+
 
 void CardThrteen::SetCardPrice(int price) {
 
@@ -98,8 +102,10 @@ void CardThrteen::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardThrteen: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
+
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
+
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

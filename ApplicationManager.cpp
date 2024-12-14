@@ -7,6 +7,7 @@
 #include "RollDiceAction.h"
 #include "SaveGridAction.h"
 #include "OpenGridAction.h"
+#include "inputdicevalue.h"
 
 ///TODO: Add #include for all action types
 
@@ -92,6 +93,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new RollDiceAction(this);
 		break;
 
+	case INPUT_DICE_VALUE:
+		// create an object of RollDiceAction here
+		pAct = new InputDiceValue(this);
+		break;
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;

@@ -1,12 +1,14 @@
 #pragma once
 
 #include "Card10__13.h"
+
 #include <fstream>
+
 
 /*[CardNine] Summary: Gives the player stopping on this card the option to buy this cell and all cells
 containing a card with the same number.For example, if a player chooses to buy
 This cell is considered a station for a specific price.
-This specific price is deducted from the player’s wallet in case he chooses to buy
+This specific price is deducted from the playerâ€™s wallet in case he chooses to buy
 the cell.
 When a player lands on a cell owned by another player(indicated by the same
 number), they must pay fees to the cell's owner. The cell price and fees are
@@ -22,12 +24,14 @@ ii.Fees to pay by passing players. */
 class CardThrteen : public Card10__13
 {
 	// CardThrteen Parameters:
+
 	//All data members are static because they are shared across all objects of that card
 	static int Fees;    //data member for card fees 
 	static int CardPrice;   //data member for card price 
 	static Player* CardOwner; //pointer to card owner
 	static int Saved;   //to make that the price and fees only saved once
 	static int Loaded;  //to make sure that the price and fees only loaded once
+
 public:
 	CardThrteen(const CellPosition& pos); // A Constructor takes card position
 
@@ -44,9 +48,11 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardNine on the passed Player
 	// by moving the player to the cell that is taken as data member
 
+
 	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
 
 	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
+
 
 	virtual ~CardThrteen(); // A Virtual Destructor
 };

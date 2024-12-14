@@ -1,10 +1,16 @@
+
 #include "CardTwelve.h"
+=======
+#include "CardTweleve.h"
+
 
 int CardTwelve::CardPrice = 0;
 int CardTwelve::Fees = 0;
 Player* CardTwelve::CardOwner = NULL;
+
 int CardTwelve::Saved = 0;
 int CardTwelve::Loaded = 0;
+
 
 CardTwelve::CardTwelve(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
@@ -15,6 +21,7 @@ CardTwelve::CardTwelve(const CellPosition& pos) : Card10__13(pos) // set the cel
 CardTwelve::~CardTwelve(void)
 {
 }
+
 
 void CardTwelve::Save(ofstream& OutFile) {
 	//special card 
@@ -47,6 +54,7 @@ void CardTwelve::Load(ifstream& InFile) {
 	}
 
 }
+
 
 void CardTwelve::SetCardPrice(int price) {
 
@@ -97,8 +105,10 @@ void CardTwelve::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardTwelve: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
+
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
+
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

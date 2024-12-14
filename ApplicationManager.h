@@ -12,8 +12,7 @@ class ApplicationManager
 {
 	// Pointer to the Grid
 	Grid* pGrid;
-
-	// Pointers to the Input and Output 
+ // Pointers to the Input and Output 
 	Input *pIn;
 	Output *pOut;
 

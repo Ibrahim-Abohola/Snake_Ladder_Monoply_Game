@@ -1,0 +1,23 @@
+#pragma once
+
+#include "Card.h"
+
+class CardSix : public Card
+{
+	// CardSix Parameters:
+	//no parameters
+
+public:
+	CardSix(const CellPosition& pos); // A Constructor takes card position
+
+	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSix which is: dice 
+
+	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSix on the passed Player
+	// Move back by the same number of steps that you just rolled and moved
+	//already. (if you reach a ladder or a snake at the end of moving forward, take it)
+
+	virtual ~CardSix(); // A Virtual Destructor
+};
+
+
+

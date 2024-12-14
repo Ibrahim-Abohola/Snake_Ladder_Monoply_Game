@@ -1,0 +1,23 @@
+#pragma once
+
+#include "Card.h"
+#include "Ladder.h"
+
+class CardFive : public Card
+{
+	// CardFive Parameters:
+    //no parameters
+
+public:
+	CardFive(const CellPosition& pos); // A Constructor takes card position
+
+	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardFive which is: dice 
+
+	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardFive on the passed Player
+	// Moving the player forward to the start of the next snake. (If no snakes ahead, do
+	//nothing)
+
+	virtual ~CardFive(); // A Virtual Destructor
+};
+
+

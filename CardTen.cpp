@@ -5,6 +5,7 @@ int CardTen::Fees = 0;
 Player * CardTen::CardOwner = NULL;
 int CardTen::Saved = 0;
 int CardTen::Loaded = 0;
+
 CardTen::CardTen(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
 	cardNumber = 10; // set the inherited cardNumber data member with the card number 
@@ -14,6 +15,7 @@ CardTen::CardTen(const CellPosition& pos) : Card10__13(pos) // set the cell posi
 CardTen::~CardTen(void)
 {
 }
+
 
 void CardTen::Save(ofstream& OutFile) {
 	//special card 
@@ -97,8 +99,10 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 		pOut->PrintMessage("New CardTen: Enter its Price and Fees that the player should pay ");
 		pOut->PrintMessage("CardPrice: ");
 		SetCardPrice(pIn->GetInteger(pOut));
+
 		pOut->PrintMessage("Fees: ");
 		SetFees(pIn->GetInteger(pOut));
+
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	}

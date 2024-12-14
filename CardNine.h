@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Card.h"
+
 #include <fstream>
+
 
 
 // [ CardNine ] Summary: Moves the player stopping on this card to a specific cell. This specific cell is
@@ -21,6 +23,7 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardNine on the passed Player
 	// by moving the player to the cell that is taken as data member
+
 
 	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
 

@@ -16,7 +16,7 @@ class Ladder;
 class Snake;
 class Card;
 class Player;
-
+class Snake;
 class Grid
 {
 	Output * pOut;   // A pointer to the Output object
@@ -72,7 +72,7 @@ public:
 	Player* GetPlayerWithNumber(int);
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-
+	Snake* GetNextSnake(const CellPosition& position);
 	// ========= User Interface Functions =========
 
 	void UpdateInterface() const;		// It Updates the Grid according to the last state of the game
@@ -82,7 +82,9 @@ public:
 	                                    //       and the cards/snakes/ladders positions do NOT change already in Play Mode
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
-									    // We added this function once here because it is used many times by other classes
+		// We added this function once here because it is used many times by other classes
+
+	void Reset();
 
 	void LightningAttack(Player* attacker);
 

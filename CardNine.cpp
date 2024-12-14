@@ -1,6 +1,7 @@
 #include "CardNine.h"
 
 
+
 CardNine::CardNine(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 9; // set the inherited cardNumber data member with the card number 
@@ -9,6 +10,7 @@ CardNine::CardNine(const CellPosition& pos) : Card(pos) // set the cell position
 CardNine::~CardNine(void)
 {
 }
+
 
 void CardNine::Save(ofstream & OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum() << " " << CellPos.GetCellNum() << endl;
@@ -20,6 +22,7 @@ void CardNine::Load(ifstream & InFile) {
 	position = position.GetCellPositionFromNum(pos);
 	CellPos = CellPos.GetCellPositionFromNum(cellpos);
 }
+
 
 void CardNine::SetCellPos(CellPosition& c) {
 	if (c.IsValidCell())

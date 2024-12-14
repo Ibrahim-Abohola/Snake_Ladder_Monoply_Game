@@ -184,6 +184,27 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
+    <ClCompile Include="CardTwo.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardThree.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFour.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFive.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardSix.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDiceValue .cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="New.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Snake.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
@@ -208,6 +229,7 @@
     <ClCompile Include="Card10__13 .cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+
     <ClCompile Include="SaveGridAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -231,6 +253,12 @@
     </ClCompile>
     <ClCompile Include="Attack.cpp">
       <Filter>SpecialAttacks</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchToDesign.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchToPlay.cpp">
+      <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +371,27 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="CardTwo.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardThree.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFour.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFive.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardSix.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="inputdicevalue.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="New.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Snake.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -367,6 +416,7 @@
     <ClInclude Include="Card10__13.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
+
     <ClInclude Include="SaveGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -387,6 +437,12 @@
     </ClInclude>
     <ClInclude Include="Attack.h">
       <Filter>SpecialAttacks</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchToDesign.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchToPlay.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
