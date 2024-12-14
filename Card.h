@@ -2,6 +2,8 @@
 
 #include "GameObject.h"
 #include "Player.h"
+#include "Snake.h"
+#include "Ladder.h"
 
 // Base Class of All Types of Cards (CardOne, CardTwo, CardThree, ...etc.)
 // Note: We will make each type of Card in a separate class because:

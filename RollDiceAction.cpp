@@ -23,7 +23,7 @@ void RollDiceAction::Execute()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action
-	
+
 	// -- If not ended, do the following --:
 	if (!(pManager->GetGrid())->GetEndGame()) {
 		// 2- Generate a random number from 1 to 6 --> This step is done for you
@@ -31,15 +31,14 @@ void RollDiceAction::Execute()
 		int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
 
 		// 3- Get the "current" player from pGrid
-		Player* curp = (pManager->GetGrid())->GetCurrentPlayer();
+		(pManager->GetGrid())->GetCurrentPlayer()->Move((pManager->GetGrid()), diceNumber);
 		// 4- Move the currentPlayer using function Move of class player
-		curp->Move((pManager->GetGrid()),diceNumber);
+
 		// 5- Advance the current player number of pGrid
-		(pManager->GetGrid())->GetCurrentPlayer();
+		(pManager->GetGrid())->AdvanceCurrentPlayer();
 	}
 
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
-
 }
 
 RollDiceAction::~RollDiceAction()
