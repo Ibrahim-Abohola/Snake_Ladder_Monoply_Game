@@ -13,12 +13,8 @@
 #include "SwitchToDesign.h"
 #include "CopyCardAction.h"
 #include "PasteCardAction.h"
-
-
-
-#include "CopyCardAction.h"
+#include "EditCardAction.h"
 #include "CutCardAction.h"
-#include "PasteCardAction.h"
 #include "DeleteGameObjectAction.h"
 
 
@@ -94,14 +90,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case OPEN_GRID:
 		pAct = new OpenGridAction(this);
 		break;
-	case COPY_CARD:
-		pAct = new CopyCardAction(this);
+	case EDIT_CARD:
+		pAct = new EditCardAction(this);
 		break;
 	case CUT_CARD:
 		pAct = new CutCardAction(this);
-		break;
-	case PASTE_CARD:
-		pAct = new PasteCardAction(this);
 		break;
 	case DELETE_GAME_OBJECT:
 		pAct = new DeleteGameObjectAction(this);

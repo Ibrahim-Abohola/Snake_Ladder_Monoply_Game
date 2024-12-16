@@ -66,8 +66,25 @@ void CardEleven::Load(ifstream& InFile) {
 
 }
 
-void CardEleven::EditCard() {
-	
+void CardEleven::EditCard(Grid * pGrid) 
+{
+	int x, y;
+	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+	// 2- Read an Integer from the user using the Input class and set the Cellpos parameter with it
+	//  print a descriptive message to the user 
+	pOut->PrintMessage("Enter the values of the card one by on .....click to continue");
+	pIn->GetPointClicked(x, y);
+	pOut->PrintMessage("CardPrice: ");
+	SetCardPrice(pIn->GetInteger(pOut));
+
+	pOut->PrintMessage("Fees: ");
+	SetFees(pIn->GetInteger(pOut));
+
+	// 3- Clear the status bar
+	pOut->ClearStatusBar();
+
 }
 
 void CardEleven::SetCardPrice(int price) {
@@ -113,7 +130,7 @@ int CardEleven::GetCardPrice() {
 
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
-	//int x, y;
+	
 	if (!IsSet()) {
 		// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 		Input* pIn = pGrid->GetInput();

@@ -167,15 +167,15 @@ bool Player::IsPoisoned() {
 	return false;
 }
 
-void Player::ChooseAttack(Grid * pGrid) {
+bool Player::ChooseAttack(Grid * pGrid) {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 	if (AttackCount >= 2) {
 		pOut->PrintMessage("You used all your special attacks");
-		return;
+		return false;
 	}
 
-	pOut->PrintMessage("Would you like to use a special attack (y or n) ");
+	pOut->PrintMessage("Would you like to use a special attack instead of recharging (y or n)  ");
 	string answer = pIn->GetSrting(pOut);
 	if (answer == "Y" || answer == "y") {
 		pGrid->PrintErrorMessage("Enter the number of the attack to choose (1.ice  2.fire  3.Lightning  4.poison) ");
@@ -184,7 +184,7 @@ void Player::ChooseAttack(Grid * pGrid) {
 			pOut->PrintMessage("Invalid Number, please enter a number from 1 to 4");
 			SpecialAttackNum = pIn->GetInteger(pOut);
 		}
-		if(!UsedAttack[SpecialAttackNum])
+		if (!UsedAttack[SpecialAttackNum])
 			switch (SpecialAttackNum)
 			{
 			case 1:
@@ -209,20 +209,20 @@ void Player::ChooseAttack(Grid * pGrid) {
 			pOut->PrintMessage("You used this attack befor, you can only use two unique special attacks .......click to continue");
 			ChooseAttack(pGrid);
 		}
+		return true;
 	}
-	
-
+	else
+		return false;
 }
 
 void Player::IsLightned(Grid * pGrid) {
-	pGrid->PrintErrorMessage("You will lose 20 coins from your wallet becuase anthor player used lighting attack");
+	pGrid->PrintErrorMessage("You will lost 20 coins from your wallet becuase anthor player used lighting attack");
 	SetWallet(GetWallet() - 20);
 	pGrid->UpdateInterface();
 	
 }
 
 void Player::UseAttack(int attacktype,Grid* pGrid) {
-
 	Attack* AttackType;
 	switch (attacktype) {
 	case 1:
@@ -254,18 +254,12 @@ void Player::UseAttack(int attacktype,Grid* pGrid) {
 void Player::Move(Grid* pGrid, int diceNumber)
 {
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) to implement this function ==
-
-
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	IncrementturnCount();
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (GetTurnCount() == 3) {
-		ChooseAttack(pGrid);
+		if(!ChooseAttack(pGrid))
 		SetTurnCount(0);
 		int wallet = GetWallet()  + diceNumber * 10;
 		SetWallet(wallet);
@@ -293,7 +287,14 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	}
 	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
 	//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
-	pGrid->UpdatePlayerCell(this, pos);
+	if (this->GetstepCount() == 100) {
+		pGrid->SetEndGame(true);
+		pGrid->UpdatePlayerCell(this, CellPosition::GetCellPositionFromNum(99));
+		pGrid->PrintErrorMessage("Playe NO." + to_string(playerNum) + " won, Congratulations!");
+		pGrid->PrintErrorMessage("Better luck nect time for the other players!");
+		return;
+	}
+	pGrid->UpdatePlayerCell(this, CellPosition::GetCellPositionFromNum(stepCount));
 	// 6- Apply() the game object of the reached cell (if any)
 	if (pCell->GetGameObject()) {
 		pCell->GetGameObject()->Apply(pGrid, this);
@@ -329,14 +330,11 @@ int Player::GetRollingTimes()
 
 void Player::SetRollingTimes(int cardnum) 
 {
-	Card* pCard = NULL;
-	pCard = dynamic_cast<Card*> (this->GetCell()->HasCard()); //check if the player on a card
-	if (pCard) {
+	//Card* pCard = NULL;
+	//pCard = dynamic_cast<Card*> (this->GetCell()->HasCard()); //check if the player on a card
+	if (1) {
 
-		if ( cardnum == 7) //if on a card seven
-			RollingTimes = 2;
-
-		if ( cardnum == 8) //if on a card seven
+		if (cardnum == 8) //if on a card seven
 			RollingTimes = 0;
 	}
 	else //at any other case

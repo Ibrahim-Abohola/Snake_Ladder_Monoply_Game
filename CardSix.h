@@ -21,16 +21,13 @@ public:
 
 	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
 
-	virtual void EditCard();
+	virtual void EditCard(Grid*);
 
 
 	virtual ~CardSix(); // A Virtual Destructor
 
 	virtual Card* CopyCard(CellPosition cPos);
 
-	virtual void Save(ofstream& OutFile);
-
-	virtual void Load(ifstream& Infile);
 };
 
 

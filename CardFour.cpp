@@ -28,9 +28,12 @@ void CardFour::Load(ifstream& InFile) {
 	
 }
 
-void CardFour::EditCard() {
+void CardFour::EditCard(Grid * pGrid) {
 	
-
+	int x, y;
+	pGrid->PrintErrorMessage("No parameters for this card to edit.......click to continue");
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
 }
 
 void CardFour::ReadCardParameters(Grid* pGrid)

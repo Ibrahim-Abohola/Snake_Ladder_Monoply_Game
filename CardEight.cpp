@@ -5,8 +5,37 @@ CardEight::CardEight(const CellPosition& pos) :Card(pos)
 {
 }
 
-void CardEight::ReadCardParameters(Grid* pGrid)
+
+Card* CardEight::CopyCard(CellPosition cPos)
 {
+	CardEight* pCard = new CardEight(cPos);
+	return pCard;
+}
+
+void CardEight::Save(ofstream& OutFile)
+{
+	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+}
+
+void CardEight::Load(ifstream& InFile)
+{
+	int  pos;
+	InFile >> pos;
+	position = position.GetCellPositionFromNum(pos);
+}
+
+void CardEight::EditCard(Grid* pGrid) {
+	int x, y;
+	pGrid->PrintErrorMessage("No parameters for this card to edit.......click to continue");
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
+}
+
+
+void CardEight::ReadCardParameters(Grid * pGrid)
+{
+	//no parametes for this card
+
 }
 
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
@@ -16,8 +45,10 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 
 	// 2-Gives the player  dice roll times.
-
-	pPlayer->SetRollingTimes(8);
+	pGrid->PrintErrorMessage("You are banned from rolling the dice next turn..........click to continue");
+	int x, y;
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pPlayer->SetRollingTimes(cardNumber);
 
 }
 
@@ -25,15 +56,3 @@ CardEight::~CardEight()
 {
 }
 
-Card* CardEight::CopyCard(CellPosition cPos)
-{
-	return nullptr;
-}
-
-void CardEight::Save(ofstream& OutFile)
-{
-}
-
-void CardEight::Load(ifstream& Infile)
-{
-}

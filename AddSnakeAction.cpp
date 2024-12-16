@@ -94,7 +94,9 @@ void AddSnakeAction::Execute()
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 		}
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
-
 	}
+	else
+		pGrid->PrintErrorMessage("Error: Cannot draw the sanke because it overlapps with anthor object ! Click to continue ...");
+
 
 }

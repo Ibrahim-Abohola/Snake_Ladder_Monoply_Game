@@ -1,4 +1,5 @@
 #include "CardTwo.h"
+#include <fstream>
 
 CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
@@ -16,7 +17,7 @@ Card* CardTwo::CopyCard(CellPosition cPos)
 	CardTwo* pCard;
 	pCard = new CardTwo(cPos);
 
-	pCard->walletAmount = this->walletAmount;
+	pCard->WalletAmount = this->WalletAmount;
 
 	return pCard;
 }
@@ -33,17 +34,21 @@ void CardTwo::Load(ifstream& InFile) {
 
 }
 
-void CardTwo::EditCard() {
-
+void CardTwo::EditCard(Grid * pGrid) {
+	int x, y;
+	(pGrid->GetOutput()->PrintMessage("enter the new value of the money taken from wallet"));
+	(pGrid->GetInput())->GetPointClicked(x, y);//click to get to next option
+	int valid = (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
+	if (valid >= 0)
+		WalletAmount = valid;
+	else
+		WalletAmount = 0;
+	(pGrid->GetOutput())->ClearStatusBar();
 }
 void CardTwo::ReadCardParameters(Grid* pGrid)
 {
 	int x, y;
 
-	///TODO: Implement this function as mentiTwod in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 	(pGrid->GetOutput()->PrintMessage("New CardTwo: Enter its wallet amount ... "));
 	(pGrid->GetInput())->GetPointClicked(x, y);
 	WalletAmount = (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
@@ -66,11 +71,6 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
-
-	///TODO: Implement this function as mentiTwod in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);

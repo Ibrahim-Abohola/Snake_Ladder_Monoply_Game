@@ -17,10 +17,7 @@ Card* CardSix::CopyCard(CellPosition cPos)
 }
 
 
-void CardSix::ReadCardParameters(Grid* pGrid)
-{
-	//nothing to do
-=======
+
 void CardSix::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum()  << endl;
 }
@@ -33,7 +30,11 @@ void CardSix::Load(ifstream& InFile) {
 	
 }
 
-void CardSix::EditCard() {
+void CardSix::EditCard(Grid * pGrid) {
+	int x, y;
+	pGrid->PrintErrorMessage("No parameters for this card to edit.......click to continue");
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
 
 }
 
@@ -47,11 +48,6 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 
 void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 {
-
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);

@@ -256,7 +256,6 @@
     <ClCompile Include="SwitchToPlay.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-
     <ClCompile Include="DeleteGameObjectAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -278,7 +277,10 @@
     <ClCompile Include="CardEight.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-
+    <ClCompile Include="CardTen.cpp" />
+    <ClCompile Include="EditCardAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -456,7 +458,6 @@
     <ClInclude Include="SwitchToPlay.h">
       <Filter>Actions</Filter>
     </ClInclude>
-
     <ClInclude Include="CardThrteen.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
@@ -481,6 +482,8 @@
     <ClInclude Include="CardEight.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-
+    <ClInclude Include="EditCardAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

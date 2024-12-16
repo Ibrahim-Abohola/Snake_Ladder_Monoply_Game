@@ -1,5 +1,6 @@
 #include "Snake.h"
 #include"Ladder.h"
+#include <fstream>
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 	this->endCellPos = endCellPos;
@@ -15,11 +16,6 @@ void Snake::Draw(Output* pOut) const
 void Snake::Apply(Grid* pGrid, Player* pPlayer)
 {
 
-
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-	// == Here are some guideline steps (numbered below) to implement this function ==
-
 	// 1- Print a message "You have reached a snake. Click to continue ..." and wait mouse click
 	pGrid->GetOutput()->PrintMessage("You have reached a snake. Click to continue ...");
 	// 2- Apply the snake's effect by moving the player to the endCellPos
@@ -27,13 +23,21 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 }
 
-void Snake::Load(ifstream& Infile)
-{
-}
-
 void Snake::Save(ofstream& OutFile)
 {
+	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;  //writing ladder information into the file
+
 }
+
+
+void Snake::Load(ifstream & InFile)
+{
+	int startcell, endcell;
+	InFile >> startcell >> endcell;
+	position = position.GetCellPositionFromNum(startcell);
+	endCellPos = endCellPos.GetCellPositionFromNum(endcell);
+}
+
 
 CellPosition Snake::GetEndPosition() const
 {
@@ -90,8 +94,4 @@ bool Snake::IsOverLapping(GameObject* newObj)
 
 }
 
-GameObject* Snake::CopyCard(CellPosition cPos)
-{
-	return nullptr;
-}
 

@@ -49,7 +49,7 @@ public:
 
 	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
 
-	virtual void EditCard();
+	virtual void EditCard(Grid * );
 
 
 	virtual ~CardTwelve(); // A Virtual Destructor

@@ -14,7 +14,7 @@ CardOne::~CardOne(void)
 	CardOne* pCard;
 	pCard = new CardOne(cPos);
 
-	pCard->walletAmount = this->walletAmount;
+	pCard->WalletAmount = this->WalletAmount;
 
 	return pCard;
 }
@@ -32,20 +32,26 @@ void CardOne::Load(ifstream& InFile) {
 	
 }
 
-void CardOne::EditCard() {
-	
-}
+void CardOne::EditCard(Grid* pGrid)
+{
+	int x, y;
+	(pGrid->GetOutput()->PrintMessage("enter the new value of the money taken from wallet"));
+	(pGrid->GetInput())->GetPointClicked(x, y);//click to get to next option
+	int valid = (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
+	if (valid >= 0)
+		WalletAmount = valid;
+	else
+		WalletAmount = 0;
+	(pGrid->GetOutput())->ClearStatusBar();
 
+}
 
 
 void CardOne::ReadCardParameters(Grid * pGrid)
 {
 	int x, y;
 	
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 	(pGrid->GetOutput()->PrintMessage("New CardOne: Enter its wallet amount ..."));
 	int valid= (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
 	if (valid >= 0)

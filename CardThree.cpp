@@ -16,19 +16,6 @@ Card* CardThree::CopyCard(CellPosition cPos)
 	return pCard;
 }
 
-void CardThree::Save(ofstream& OutFile)
-{
-}
-
-void CardThree::Load(ifstream& Infile)
-{
-}
-
-void CardThree::ReadCardParameters(Grid* pGrid)
-{
-	//no input
-	return;
-}
 
 void CardThree::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
@@ -41,8 +28,11 @@ void CardThree::Load(ifstream& InFile) {
 
 }
 
-void CardThree::EditCard() {
-
+void CardThree::EditCard(Grid * pGrid) {
+	int x, y;
+	pGrid->PrintErrorMessage("No parameters for this card to edit.......click to continue");
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
 }
 
 void CardThree::ReadCardParameters(Grid * pGrid) {
@@ -52,10 +42,6 @@ void CardThree::ReadCardParameters(Grid * pGrid) {
 void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 {
 
-	///TODO: Implement this function as mentiThreed in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);

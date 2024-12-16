@@ -60,10 +60,6 @@ void AddLadderAction::ReadActionParameters()
 		endPos = pIn->GetCellClicked();
 	}
 
-
-	///TODO: Make the needed validations on the read parameters
-
-	//pOut->ClearStatusBar();
 	pOut->ClearStatusBar();
 
 }
@@ -96,5 +92,7 @@ void AddLadderAction::Execute()
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
 
 	}
+	else
+		pGrid->PrintErrorMessage("Error: Cannot draw the sanke because it overlapps with anthor object ! Click to continue ...");
 
 }

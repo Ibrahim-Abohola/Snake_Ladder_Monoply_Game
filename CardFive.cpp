@@ -5,8 +5,16 @@ CardFive::CardFive(const CellPosition& pos) : Card(pos) // set the cell position
 	cardNumber = 5; // set the inherited cardNumber data member with the card number (5 here)
 }
 
-CardFive::~CardFive(void)
+CardFive::~CardFive()
 {
+
+}
+
+void CardFive::EditCard(Grid* pGrid) {
+	int x, y;
+	pGrid->PrintErrorMessage("No parameters for this card to edit.......click to continue");
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
 }
 
 
@@ -19,11 +27,8 @@ Card* CardFive::CopyCard(CellPosition cPos)
 }
 
 
-void CardFive::ReadCardParameters(Grid* pGrid)
-{
-	//nothing to do
 
-void CardFive::Save(ofstream& OutFile) {
+void CardFive::Save(ofstream & OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
 }
 
@@ -34,9 +39,6 @@ void CardFive::Load(ifstream& InFile) {
 	
 }
 
-void CardFive::EditCard() {
-
-}
 
 
 void CardFive::ReadCardParameters(Grid* pGrid)

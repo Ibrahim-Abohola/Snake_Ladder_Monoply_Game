@@ -41,7 +41,7 @@ public:
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual bool IsOverLapping(GameObject* newObj);
 
-	virtual  GameObject* CopyCard(CellPosition cPos) = 0;
+	
 
 
 };

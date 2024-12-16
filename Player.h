@@ -22,10 +22,9 @@ class Player
 	int BurnCount;     //count the turns the player will be burned (deduct 20 from his wallet for 3 turns) 
 	int PoisonCount;   //count the turns the player will be poisoned (deduct 1 from his rolldice for 5 turns)
 	bool Skip;   //used when the player should skip next turn
-	bool UsedAttack[4];
+	bool UsedAttack[4]; //bool array to track the usage of the player to the attacks
 
-
-	int RollingTimes;
+	int RollingTimes;      //to be used in special cards and other situations
 
 public:
 
@@ -68,7 +67,7 @@ public:
 	void SetPoisonCount();
 	bool IsPoisoned();
 	void IsLightned(Grid*);
-	void ChooseAttack(Grid*);
+	bool ChooseAttack(Grid*);
 	void UseAttack(int,Grid*);
 
 

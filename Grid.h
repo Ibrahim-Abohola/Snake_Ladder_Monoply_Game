@@ -45,7 +45,7 @@ public:
 	                                                     // only if the Cell does NOT already contain an object, 
 	                                                     // otherwise return false and don't add
 
-	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
+	bool RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
 	                                                                          // Clears the player's circle from the previous cell
@@ -88,20 +88,18 @@ public:
 
 	void LightningAttack(Player* attacker);
 
-	void SaveAllLadders(ofstream& OutFile);
-	void SaveAllSnakes(ofstream& OutFile);
-	void SaveAllCards(ofstream& OutFile);
+	void SaveAllLadders(ofstream& OutFile);  //to save all ladders 
+	void SaveAllSnakes(ofstream& OutFile);   //to save all snakes
+	void SaveAllCards(ofstream& OutFile);    //to save all cards
 
-	Card* IsCard(CellPosition pos);
+	Card* IsCard(CellPosition pos);         //to check if the user clicked on card to be used in the copy action
 
+	bool IsOverLapping(GameObject* newObj);
 
 	void ClearGrid(); //function that clears the grid from all its game objects to be used when loading a grid or anywhere else
 
 	~Grid(); // A destructor for any needed deallcations
 
-	bool IsOverLapping(GameObject* newObj);
-
-	Card * IsCard(CellPosition pos);
 
 };
 

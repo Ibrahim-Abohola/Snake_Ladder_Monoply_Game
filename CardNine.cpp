@@ -19,7 +19,6 @@ Card* CardNine::CopyCard(CellPosition cPos)
 	pCard->CellPos = this->CellPos;
 	
 	return pCard;
-	
 
 }
 
@@ -35,11 +34,16 @@ void CardNine::Load(ifstream & InFile) {
 	CellPos = CellPos.GetCellPositionFromNum(cellpos);
 }
 
+void CardNine::EditCard(Grid* pGrid) {
+	ReadCardParameters(pGrid);
+}
+
 
 void CardNine::SetCellPos(CellPosition& c) {
 	if (c.IsValidCell())
 		CellPos = c;
 }
+
 
 void CardNine::ReadCardParameters(Grid* pGrid)
 {
@@ -49,16 +53,12 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	Output* pOut = pGrid->GetOutput();
 	// 2- Read an Integer from the user using the Input class and set the Cellpos parameter with it
 	//  print a descriptive message to the user 
-	pOut->PrintMessage("New CardNine: Enter its Cell pos that the player should be moved to ");
+	pOut->PrintMessage("Enter the new Cell pos that the player should be moved to ");
 	SetCellPos(pIn->GetCellClicked());
 
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 
-}
-
-void CardNine::EditCard() {
-	
 }
 
 void CardNine::Apply(Grid* pGrid, Player* pPlayer)

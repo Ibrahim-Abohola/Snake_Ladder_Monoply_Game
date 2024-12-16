@@ -4,8 +4,18 @@ CardSeven::CardSeven(const CellPosition& pos) :Card(pos)
 {
 }
 
+
+void CardSeven::EditCard(Grid* pGrid) {
+	int x, y;
+	pGrid->PrintErrorMessage("No parameters for this card to edit.......click to continue");
+	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
+}
+
+
 void CardSeven::ReadCardParameters(Grid* pGrid)
 {
+	//no parameters to read
 }
 
 void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
@@ -16,7 +26,7 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 	// 2-Gives the player  dice roll times.
 	
-	pPlayer->SetRollingTimes(7);
+	pPlayer->SetRollingTimes(cardNumber);
 
 
 }
@@ -27,13 +37,20 @@ CardSeven::~CardSeven()
 
 Card* CardSeven::CopyCard(CellPosition cPos)
 {
-	return nullptr;
+	CardSeven* pCard = new CardSeven(cPos);
+	return pCard;
 }
 
 void CardSeven::Save(ofstream& OutFile)
 {
+	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+
 }
 
-void CardSeven::Load(ifstream& Infile)
+void CardSeven::Load(ifstream& InFile)
 {
+	int  pos;
+	InFile >> pos;
+	position = position.GetCellPositionFromNum(pos);
+
 }

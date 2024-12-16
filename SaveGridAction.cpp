@@ -37,9 +37,9 @@ void SaveGridAction::Execute() {
 		return;
 	}
 
-	pGrid->SaveAllLadders(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any ladders
-	pGrid->SaveAllSnakes(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any ladders
-	pGrid->SaveAllCards(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any ladders
+	pGrid->SaveAllLadders(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any ladders first
+	pGrid->SaveAllSnakes(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any snakes after the ladders
+	pGrid->SaveAllCards(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any cards after the snakes
 
 
 	SaveGrid.close();

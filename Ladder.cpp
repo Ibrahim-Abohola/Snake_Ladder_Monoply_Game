@@ -110,7 +110,3 @@ bool Ladder::IsOverLapping(GameObject* newObj)
 		return false;    // If the object is not a ladder or not located in the same column, there is no overlapping.
 }
 
-GameObject* Ladder::CopyCard(CellPosition cPos)
-{
-	return nullptr;
-}

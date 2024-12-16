@@ -58,21 +58,24 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	return false; // if not a valid position
 }
 
-void Grid::RemoveObjectFromCell(const CellPosition & pos)
+bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		if (CellList[pos.VCell()][pos.HCell()]->GetGameObject()) {
+			delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+			return true;
+		}
     	CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
+	return false;
 }
 
 void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 {
 	// Clear the player's circle from the old cell position
 	player->ClearDrawing(pOut);
-	player->Move(this, 5);
 	// Set the player's CELL with the new position
 	Cell * newCell = CellList[newPosition.VCell()][newPosition.HCell()];
 	player->SetCell(newCell);	
@@ -147,9 +150,8 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
-	
-      
-			///TODO: Check if CellList[i][j] has a ladder, if yes return it
+
+  			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			
 			if (CellList[i][j]->HasLadder())
 				return CellList[i][j]->HasLadder();
@@ -167,9 +169,9 @@ Snake* Grid::GetNextSnake(const CellPosition& position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
+			///TODO: Check if CellList[i][j] has a snake, if yes return it
 			if (CellList[i][j]->HasSnake())
 				return CellList[i][j]->HasSnake();
-			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 
 
 		}
@@ -306,14 +308,31 @@ void Grid::ClearGrid() {
 	UpdateInterface();
 }
 
+bool Grid::IsOverLapping(GameObject* newObj) {
+	for (int j = 0; j < NumVerticalCells; j++) {
+		for (int i = 0; i < NumHorizontalCells; i++) {
+			//looping
 
-Card* Grid::IsCard(CellPosition pos) {
+			if (CellList[j][i]->GetGameObject() != nullptr) {
+
+				if (CellList[j][i]->GetGameObject()->IsOverLapping(newObj)) // calling
+					return true;
+			}
+		}
+
+	}
+	return false;
+}
+
+Card* Grid::IsCard(CellPosition pos)
+{
 	if (CellList[pos.VCell()][pos.HCell()]->HasCard()) {
+
 		GameObject* pObj = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		Card* pCard = dynamic_cast<Card*>(pObj);
 		return pCard;
 	}
-	return NULL;
+	return nullptr;
 }
 
 
@@ -339,31 +358,3 @@ Grid::~Grid()
 }
 
 
-bool Grid::IsOverLapping(GameObject* newObj) {
-	for (int j = 0; j < NumVerticalCells; j++) {
-		for (int i = 0; i < NumHorizontalCells; i++) {
-		//looping
-
-			if (CellList[j][i]->GetGameObject() != nullptr) {
-
-				if (CellList[j][i]->GetGameObject()->IsOverLapping(newObj)) // calling
-					return true;
-			}
-		}
-
-	}
-	return false;
-}
-
-Card * Grid::IsCard(CellPosition pos)
-{
-	if (CellList[pos.VCell()][pos.HCell()]->HasCard()) {
-	
-		GameObject* pObj = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
-		Card* pCard = dynamic_cast<Card*>(pObj);
-		return pCard;
-	}
-	return nullptr;
-}
-
-// bool chech copy to check if th user click on a card + take cellposition 

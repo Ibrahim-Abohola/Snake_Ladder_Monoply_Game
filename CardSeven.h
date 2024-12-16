@@ -19,9 +19,11 @@ public:
 
 	virtual Card* CopyCard(CellPosition cPos);
 
+	virtual void EditCard(Grid*);
+
 	virtual void Save(ofstream& OutFile);
 
-	virtual void Load(ifstream& Infile);
+	virtual void Load(ifstream& InFile);
 };
 
 

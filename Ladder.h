@@ -19,6 +19,8 @@ public:
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
 
+	virtual bool IsOverLapping(GameObject* newObj); //to check for overlapping
+
 	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
 
 	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
@@ -28,9 +30,6 @@ public:
 
 	//=============================================================================================//
 
-	virtual bool IsOverLapping(GameObject* newObj);
-
-	virtual GameObject* CopyCard(CellPosition cPos);
 
 };
 

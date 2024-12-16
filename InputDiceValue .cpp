@@ -18,21 +18,23 @@ void InputDiceValue::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
-	//  Get the input dice value from the user
-	pOut->PrintMessage("enter the value of dice from 1 to 6 :) ");
-	diceNumber = pIn->GetInteger(pOut);
-	pIn->GetPointClicked(x, y);
-	msg = "you entered " + to_string(diceNumber);
-	pOut->PrintMessage(msg);
-	pIn->GetPointClicked(x, y);
-	//validation on dice number the loop doesn't stop unless the user enters a valid dice number
-	while (diceNumber <= 0 || diceNumber >= 6) {   
-		pGrid->PrintErrorMessage("You entered an invalid diceNumber, please enter a number from 1 to 6");
+	int rollingtimes = (pManager->GetGrid())->GetCurrentPlayer()->GetRollingTimes();
+	if (rollingtimes) {
+		//  Get the input dice value from the user
+		pOut->PrintMessage("enter the value of dice from 1 to 6 :) ");
 		diceNumber = pIn->GetInteger(pOut);
+		pIn->GetPointClicked(x, y);
 		msg = "you entered " + to_string(diceNumber);
 		pOut->PrintMessage(msg);
 		pIn->GetPointClicked(x, y);
+		//validation on dice number the loop doesn't stop unless the user enters a valid dice number
+		while (diceNumber <= 0 || diceNumber >= 6) {
+			pGrid->PrintErrorMessage("You entered an invalid diceNumber, please enter a number from 1 to 6");
+			diceNumber = pIn->GetInteger(pOut);
+			msg = "you entered " + to_string(diceNumber);
+			pOut->PrintMessage(msg);
+			pIn->GetPointClicked(x, y);
+		}
 	}
 }
 
