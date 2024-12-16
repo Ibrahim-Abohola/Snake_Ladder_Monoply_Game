@@ -32,5 +32,7 @@ public:
 
 	virtual ~Card(); // A Virtual Destructor
 
+	virtual Card* CopyCard(CellPosition) = 0;
+
 };
 

@@ -17,6 +17,8 @@ public:
 	
 	CellPosition GetPosition() const;     // A Getter for position
 
+	void SetPosition(const CellPosition& pos);     // A Setter for position
+
 	// ============ Virtual Functions ============
 
 	virtual void Draw(Output* pOut) const = 0;	 // Draws the game object in the window in his position cell 
@@ -31,9 +33,16 @@ public:
 
 	// Decide the parameters that you should pass to each function	
 	
+	
 	virtual void Save(ofstream & OutFile) = 0;	// Saves the GameObject parameters to the file
 	virtual void Load(ifstream & Infile) = 0;	// Loads and Reads the GameObject parameters from the file
 
 	virtual ~GameObject(); // Virtual destructor
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	virtual bool IsOverLapping(GameObject* newObj);
+
+	virtual  GameObject* CopyCard(CellPosition cPos) = 0;
+
+
 };
 

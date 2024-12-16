@@ -1,7 +1,6 @@
 #include "CardThrteen.h"
 
 
-
 int CardThrteen::CardPrice = 0;
 int CardThrteen::Fees = 0;
 Player* CardThrteen::CardOwner = NULL;
@@ -17,6 +16,19 @@ CardThrteen::CardThrteen(const CellPosition& pos) : Card10__13(pos) // set the c
 
 CardThrteen::~CardThrteen(void)
 {
+}
+
+Card* CardThrteen::CopyCard(CellPosition cPos)
+{
+	CardThrteen* pCard;
+	pCard = new CardThrteen(cPos);
+
+	pCard->CardPrice = this->CardPrice;
+	pCard->CardOwner = this->CardOwner;
+	pCard->Saved = this->Saved;
+	pCard->Loaded = this->Loaded;
+	pCard->Fees= this->Fees;
+	return pCard;
 }
 
 

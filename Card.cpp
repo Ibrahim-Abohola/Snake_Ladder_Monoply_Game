@@ -46,3 +46,4 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 Card::~Card()
 {
 }
+

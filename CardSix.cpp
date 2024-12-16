@@ -9,9 +9,22 @@ CardSix::~CardSix(void)
 {
 }
 
+Card* CardSix::CopyCard(CellPosition cPos)
+{
+	CardSix* pCard;
+	pCard = new CardSix(cPos);
+	return pCard;
+}
+
+
+void CardSix::ReadCardParameters(Grid* pGrid)
+{
+	//nothing to do
+=======
 void CardSix::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum()  << endl;
 }
+
 
 void CardSix::Load(ifstream& InFile) {
 	int  pos;

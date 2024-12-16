@@ -1,29 +1,43 @@
 #include "CardTen.h"
+#include "CardTen.h"
 
 int CardTen::CardPrice = 0;
 int CardTen::Fees = 0;
-Player * CardTen::CardOwner = NULL;
+Player* CardTen::CardOwner = NULL;
 int CardTen::Saved = 0;
 int CardTen::Loaded = 0;
 
 CardTen::CardTen(const CellPosition& pos) : Card10__13(pos) // set the cell position of the card
 {
 	cardNumber = 10; // set the inherited cardNumber data member with the card number 
-	
+
 }
 
 CardTen::~CardTen(void)
 {
 }
 
+Card* CardTen::CopyCard(CellPosition cPos)
+{
+	CardTen* pCard;
+	pCard = new CardTen(cPos);
+
+	pCard->CardPrice = this->CardPrice;
+	pCard->CardOwner = this->CardOwner;
+	pCard->Saved = this->Saved;
+	pCard->Loaded = this->Loaded;
+	pCard->Fees = this->Fees;
+	return pCard;
+}
+
 
 void CardTen::Save(ofstream& OutFile) {
 	//special card 
 	//we should save its fees and price only once the first time card of that type appear in the grid
-	if (Saved == 0)  
+	if (Saved == 0)
 	{
 		OutFile << GetCardNumber() << " " << position.GetCellNum() << " " << CardPrice << " " << Fees << endl;
-		Saved++;  
+		Saved++;
 	}
 	else
 		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
@@ -46,7 +60,7 @@ void CardTen::Load(ifstream& InFile) {
 		InFile >> pos;
 		position = position.GetCellPositionFromNum(pos);
 	}
-	
+
 }
 
 void CardTen::EditCard() {
@@ -68,25 +82,25 @@ void CardTen::SetFees(int f) {
 
 }
 bool CardTen::IsSet() {
-	if (GetCardPrice() <= 0 || GetCardFees() <= 0)  
+	if (GetCardPrice() <= 0 || GetCardFees() <= 0)
 		return false;
 	return true;
 
 }
 
-Player * CardTen::SetOwner(Player * pPlayer) {
+Player* CardTen::SetOwner(Player* pPlayer) {
 	CardOwner = pPlayer;
 	return CardOwner;
 }
 
-Player * CardTen::GetOwner(){	
+Player* CardTen::GetOwner() {
 	return CardOwner;
 }
 
 int CardTen::GetCardFees() {
 	return Fees;
 }
-int CardTen::GetCardPrice()  {
+int CardTen::GetCardPrice() {
 	return CardPrice;
 }
 
@@ -122,6 +136,6 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 
 	BuyCard(pGrid, pPlayer, GetCardPrice(), CardOwner);  //checks if the card is bought or not and wheather the player wants tp buy the catd or not
 	PayCardFees(pGrid, pPlayer, GetCardFees(), CardOwner);   //if the player is not the owner it will deduct the card fees from his wallet
-		
+
 
 }

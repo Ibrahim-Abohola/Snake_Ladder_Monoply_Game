@@ -16,23 +16,30 @@ void RollDiceAction::ReadActionParameters()
 
 void RollDiceAction::Execute()
 {
-		
 
 	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action
+	
+	int j = (pManager->GetGrid())->GetCurrentPlayer()->GetRollingTimes();
 
-	// -- If not ended, do the following --:
-	if (!(pManager->GetGrid())->GetEndGame()) {
-		// 2- Generate a random number from 1 to 6 --> This step is done for you
-		srand((int)time(NULL)); // time is for different seed each run
-		int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
+	//(pManager->GetGrid())->GetCurrentPlayer()->GetCell()->GetCellPosition();
 
-		// 3- Get the "current" player from pGrid
-		(pManager->GetGrid())->GetCurrentPlayer()->Move((pManager->GetGrid()), diceNumber);
-		// 4- Move the currentPlayer using function Move of class player
+	for (int i = j; j > 0; i--) {
+		// -- If not ended, do the following --:
+		if (!(pManager->GetGrid())->GetEndGame()) {
+			// 2- Generate a random number from 1 to 6 --> This step is done for you
+			srand((int)time(NULL)); // time is for different seed each run
+			int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
 
-		// 5- Advance the current player number of pGrid
-		(pManager->GetGrid())->AdvanceCurrentPlayer();
+			// 3- Get the "current" player from pGrid
+			(pManager->GetGrid())->GetCurrentPlayer()->Move((pManager->GetGrid()), diceNumber);
+			// 4- Move the currentPlayer using function Move of class player
+
+			// 5- Advance the current player number of pGrid
+			(pManager->GetGrid())->AdvanceCurrentPlayer();
+		}
+
 	}
+	(pManager->GetGrid())->GetCurrentPlayer()->SetRollingTimes(1);
 
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 }

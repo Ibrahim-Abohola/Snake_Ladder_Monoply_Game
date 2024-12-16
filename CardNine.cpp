@@ -11,6 +11,18 @@ CardNine::~CardNine(void)
 {
 }
 
+Card* CardNine::CopyCard(CellPosition cPos)
+{
+	CardNine* pCard;
+	pCard = new  CardNine(cPos);
+
+	pCard->CellPos = this->CellPos;
+	
+	return pCard;
+	
+
+}
+
 
 void CardNine::Save(ofstream & OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum() << " " << CellPos.GetCellNum() << endl;

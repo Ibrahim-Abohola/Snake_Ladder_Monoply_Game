@@ -9,6 +9,14 @@ CardFour::~CardFour(void)
 {
 }
 
+
+Card* CardFour::CopyCard(CellPosition cPos)
+{
+	CardFour* pCard;
+	pCard = new CardFour(cPos);
+	return pCard;
+}
+
 void CardFour::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
 }
@@ -22,6 +30,7 @@ void CardFour::Load(ifstream& InFile) {
 
 void CardFour::EditCard() {
 	
+
 }
 
 void CardFour::ReadCardParameters(Grid* pGrid)

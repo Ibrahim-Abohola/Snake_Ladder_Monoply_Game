@@ -1,22 +1,23 @@
-#include "CopyCardAction.h"
+#include "DeleteGameObjectAction.h"
 #include "Input.h"
 #include "Output.h"
 #include "Card.h"
 
-
-CopyCardAction::CopyCardAction(ApplicationManager* pApp) : Action(pApp)
+DeleteGameObjectAction::DeleteGameObjectAction(ApplicationManager* pApp) : Action(pApp)
 {
+
 }
 
-void CopyCardAction::ReadActionParameters()
+void DeleteGameObjectAction::ReadActionParameters()
 {
 	// 1- Get a Pointer to the Input / Output Interfaces
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
+
 	// 2- Read the "cardPosition" parameter (its cell position) and set its data member
-	pOut->PrintMessage("Copy Card : Click on the Card that you want to copy...");
+	pOut->PrintMessage("Delete : Click on the Card that you want to delete");
 	cardPosition = pIn->GetCellClicked();
 	while ((!cardPosition.IsValidCell()) || cardPosition.GetCellNum() == 1 || cardPosition.GetCellNum() == 99) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
@@ -24,25 +25,24 @@ void CopyCardAction::ReadActionParameters()
 	}
 }
 
-void CopyCardAction::Execute()
+void DeleteGameObjectAction::Execute()
 {
 	// 1- The first line of any Action Execution is to read its parameter first
 	ReadActionParameters();
-	Grid* pGrid = pManager->GetGrid();
 
+	// 2- Check if the cell the user clicked and want to delete it's card has a card or not
+	Grid* pGrid = pManager->GetGrid();
 	if (pGrid->IsCard(cardPosition)) {
 
-		pGrid->SetClipboard(pGrid->IsCard(cardPosition));
-		pGrid->PrintErrorMessage("Copied sucsessfully");
-
+		pGrid->RemoveObjectFromCell(cardPosition);
+		pGrid->UpdateInterface();
+		pGrid->PrintErrorMessage("Deleted successfully");
 	}
 	else {
-		pGrid->PrintErrorMessage("Card cannot be copied, the cell has no card to copy");
+		pGrid->PrintErrorMessage("Card cannot be deleted, the cell has no card to delete");
 	}
-
-
 }
 
-CopyCardAction::~CopyCardAction()
+DeleteGameObjectAction::~DeleteGameObjectAction()
 {
 }

@@ -2,6 +2,8 @@
 
 #include "Card.h"
 #include "Snake.h"
+#include <fstream>
+
 
 class CardFour : public Card
 {
@@ -24,5 +26,11 @@ public:
 
 
 	virtual ~CardFour(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& Infile);
 };
 

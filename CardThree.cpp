@@ -9,6 +9,21 @@ CardThree::~CardThree(void)
 {
 }
 
+Card* CardThree::CopyCard(CellPosition cPos)
+{
+	CardThree* pCard;
+	pCard = new CardThree(cPos);
+	return pCard;
+}
+
+void CardThree::Save(ofstream& OutFile)
+{
+}
+
+void CardThree::Load(ifstream& Infile)
+{
+}
+
 void CardThree::ReadCardParameters(Grid* pGrid)
 {
 	//no input

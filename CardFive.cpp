@@ -9,6 +9,20 @@ CardFive::~CardFive(void)
 {
 }
 
+
+Card* CardFive::CopyCard(CellPosition cPos)
+{
+	CardFive* pCard;
+	pCard = new CardFive(cPos);
+	return pCard;
+
+}
+
+
+void CardFive::ReadCardParameters(Grid* pGrid)
+{
+	//nothing to do
+
 void CardFive::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
 }
@@ -21,8 +35,7 @@ void CardFive::Load(ifstream& InFile) {
 }
 
 void CardFive::EditCard() {
-	Card* pCard;
-	return pCard;
+
 }
 
 

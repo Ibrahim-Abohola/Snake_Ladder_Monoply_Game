@@ -32,5 +32,8 @@ public:
 	virtual void EditCard();
 
 	virtual ~CardNine(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
 };
 

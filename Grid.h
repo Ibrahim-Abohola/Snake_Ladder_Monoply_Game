@@ -99,5 +99,11 @@ public:
 
 	~Grid(); // A destructor for any needed deallcations
 
+	bool IsOverLapping(GameObject* newObj);
+
+	Card * IsCard(CellPosition pos);
+
 };
+
+
 

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Card.h"
 
 #include "GameObject.h"
 #include "Attack.h"
@@ -21,6 +22,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 		UsedAttack[i] = false;
 	}
 	// Make all the needed initialization or validations
+	RollingTimes = 1;
 }
 
 // ====== Setters and Getters ======
@@ -318,6 +320,29 @@ void Player::AppendPlayerInfo(string& playersInfo) const
 	playersInfo += to_string(turnCount) + ")";
 }
 
+
+int Player::GetRollingTimes()
+{
+	return RollingTimes;
+
+}
+
+void Player::SetRollingTimes(int cardnum) 
+{
+	Card* pCard = NULL;
+	pCard = dynamic_cast<Card*> (this->GetCell()->HasCard()); //check if the player on a card
+	if (pCard) {
+
+		if ( cardnum == 7) //if on a card seven
+			RollingTimes = 2;
+
+		if ( cardnum == 8) //if on a card seven
+			RollingTimes = 0;
+	}
+	else //at any other case
+		RollingTimes = 1;
+}
+
 void Player::ResetPlayer() {
 
 	stepCount = 0;
@@ -333,3 +358,4 @@ void Player::ResetPlayer() {
 		UsedAttack[i] = false;
 	}
 }
+

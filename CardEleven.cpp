@@ -20,6 +20,19 @@ CardEleven::~CardEleven(void)
 {
 }
 
+Card* CardEleven::CopyCard(CellPosition cPos)
+{
+	CardEleven* pCard;
+	pCard = new CardEleven(cPos);
+
+	pCard->CardPrice = this->CardPrice;
+	pCard->CardOwner = this->CardOwner;
+	pCard->Saved = this->Saved;
+	pCard->Loaded = this->Loaded;
+	pCard->Fees = this->Fees;
+	return pCard;
+}
+
 
 void CardEleven::Save(ofstream& OutFile) {
 	//special card 
@@ -100,7 +113,7 @@ int CardEleven::GetCardPrice() {
 
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
-	int x, y;
+	//int x, y;
 	if (!IsSet()) {
 		// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 		Input* pIn = pGrid->GetInput();
