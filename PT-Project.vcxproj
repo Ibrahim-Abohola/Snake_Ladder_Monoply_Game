@@ -135,19 +135,18 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Card.cpp" />
-
+    <ClCompile Include="CardEight.cpp" />
     <ClCompile Include="CardFive.cpp" />
     <ClCompile Include="CardFour.cpp" />
     <ClCompile Include="Card10__13 .cpp" />
     <ClCompile Include="CardEleven.cpp" />
     <ClCompile Include="CardNine.cpp" />
     <ClCompile Include="CardOne.cpp" />
-
+    <ClCompile Include="CardSeven.cpp" />
     <ClCompile Include="CardSix.cpp" />
+    <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwo.cpp" />
-    
-    <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThrteen.cpp" />
     <ClCompile Include="CardTwelve.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -188,6 +187,9 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="CopyCardAction.cpp" />
+    <ClCompile Include="CutCardAction.cpp" />
+    <ClCompile Include="DeleteGameObjectAction.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -195,21 +197,19 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputDiceValue .cpp" />
     <ClCompile Include="Ladder.cpp" />
-
     <ClCompile Include="Lightning.cpp" />
     <ClCompile Include="OpenGridAction.cpp" />
     <ClCompile Include="New.cpp" />
     <ClCompile Include="Output.cpp" />
+    <ClCompile Include="PasteCardAction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
-
     <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="SwitchToDesign.cpp" />
     <ClCompile Include="SwitchToPlay.cpp" />
-
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -219,25 +219,20 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="Card.h" />
-
+    <ClInclude Include="CardEight.h" />
     <ClInclude Include="CardFive.h" />
     <ClInclude Include="CardFour.h" />
     <ClInclude Include="Card10__13.h" />
     <ClInclude Include="CardEleven.h" />
     <ClInclude Include="CardNine.h" />
     <ClInclude Include="CardOne.h" />
-
+    <ClInclude Include="CardSeven.h" />
     <ClInclude Include="CardTen.h" />
     <ClInclude Include="CardThrteen.h" />
     <ClInclude Include="CardTwelve.h" />
-
     <ClInclude Include="CardSix.h" />
     <ClInclude Include="CardThree.h" />
     <ClInclude Include="CardTwo.h" />
-    <ClInclude Include="CardTen.h" />
-    <ClInclude Include="CardThrteen.h" />
-    <ClInclude Include="CardTweleve.h" />
-    
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -260,7 +255,10 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="CopyCardAction.h" />
+    <ClInclude Include="CutCardAction.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="DeleteGameObjectAction.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
@@ -268,20 +266,18 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="inputdicevalue.h" />
     <ClInclude Include="Ladder.h" />
-
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="OpenGridAction.h" />
     <ClInclude Include="New.h" />
     <ClInclude Include="Output.h" />
+    <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="RollDiceAction.h" />
-
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="SwitchToDesign.h" />
     <ClInclude Include="SwitchToPlay.h" />
-
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

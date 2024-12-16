@@ -9,6 +9,21 @@ CardFour::~CardFour(void)
 {
 }
 
+Card* CardFour::CopyCard(CellPosition cPos)
+{
+	CardFour* pCard;
+	pCard = new CardFour(cPos);
+	return pCard;
+}
+
+void CardFour::Save(ofstream& OutFile)
+{
+}
+
+void CardFour::Load(ifstream& Infile)
+{
+}
+
 void CardFour::ReadCardParameters(Grid* pGrid)
 {
 	//no input

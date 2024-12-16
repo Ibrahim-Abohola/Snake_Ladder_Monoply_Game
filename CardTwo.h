@@ -17,4 +17,12 @@ public:
 	// by incrementing the player's wallet by the walletAmount data member
 
 	virtual ~CardTwo(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& Infile);
+
+
 };

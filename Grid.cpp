@@ -99,7 +99,9 @@ Output * Grid::GetOutput() const
 void Grid::SetClipboard(Card * pCard) // to be used in copy/cut
 {
 	// you may update slightly in implementation if you want (but without breaking responsibilities)
-	Clipboard = pCard;
+
+		Clipboard = pCard;
+
 }
 
 Card * Grid::GetClipboard() const // to be used in paste
@@ -344,3 +346,32 @@ Grid::~Grid()
 	}
 }
 
+
+bool Grid::IsOverLapping(GameObject* newObj) {
+	for (int j = 0; j < NumVerticalCells; j++) {
+		for (int i = 0; i < NumHorizontalCells; i++) {
+		//looping
+
+			if (CellList[j][i]->GetGameObject() != nullptr) {
+
+				if (CellList[j][i]->GetGameObject()->IsOverLapping(newObj)) // calling
+					return true;
+			}
+		}
+
+	}
+	return false;
+}
+
+Card * Grid::IsCard(CellPosition pos)
+{
+	if (CellList[pos.VCell()][pos.HCell()]->HasCard()) {
+	
+		GameObject* pObj = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		Card* pCard = dynamic_cast<Card*>(pObj);
+		return pCard;
+	}
+	return nullptr;
+}
+
+// bool chech copy to check if th user click on a card + take cellposition 

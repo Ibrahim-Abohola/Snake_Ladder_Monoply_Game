@@ -1,7 +1,7 @@
 
 #include "CardTwelve.h"
-=======
-#include "CardTweleve.h"
+
+
 
 
 int CardTwelve::CardPrice = 0;
@@ -20,6 +20,20 @@ CardTwelve::CardTwelve(const CellPosition& pos) : Card10__13(pos) // set the cel
 
 CardTwelve::~CardTwelve(void)
 {
+}
+
+Card* CardTwelve::CopyCard(CellPosition cPos)
+{
+
+	CardTwelve* pCard;
+	pCard = new CardTwelve(cPos);
+
+	pCard->CardPrice = this->CardPrice;
+	pCard->CardOwner = this->CardOwner;
+	pCard->Saved = this->Saved;
+	pCard->Loaded = this->Loaded;
+	pCard->Fees = this->Fees;
+	return pCard;
 }
 
 

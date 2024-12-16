@@ -50,5 +50,8 @@ public:
 	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
 
 	virtual ~CardTwelve(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
 };
 

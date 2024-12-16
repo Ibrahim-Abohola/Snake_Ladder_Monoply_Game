@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Card.h"
+#include <fstream>
 
 class CardThree : public Card
 {
@@ -16,5 +17,11 @@ public:
 	//nothing)
 
 	virtual ~CardThree(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& Infile);
 };
 

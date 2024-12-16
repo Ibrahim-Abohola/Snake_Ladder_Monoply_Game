@@ -1,12 +1,30 @@
 #include "CardTwo.h"
-#include "CardTwo.h"
 
 CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
+
 	cardNumber = 2; // set the inherited cardNumber data member with the card number (1 here)
 }
 
 CardTwo::~CardTwo(void)
+{
+}
+
+Card* CardTwo::CopyCard(CellPosition cPos)
+{
+	CardTwo* pCard;
+	pCard = new CardTwo(cPos);
+
+	pCard->walletAmount = this->walletAmount;
+
+	return pCard;
+}
+
+void CardTwo::Save(ofstream& OutFile)
+{
+}
+
+void CardTwo::Load(ifstream& Infile)
 {
 }
 

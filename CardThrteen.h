@@ -8,7 +8,7 @@
 /*[CardNine] Summary: Gives the player stopping on this card the option to buy this cell and all cells
 containing a card with the same number.For example, if a player chooses to buy
 This cell is considered a station for a specific price.
-This specific price is deducted from the playerâ€™s wallet in case he chooses to buy
+This specific price is deducted from the player’s wallet in case he chooses to buy
 the cell.
 When a player lands on a cell owned by another player(indicated by the same
 number), they must pay fees to the cell's owner. The cell price and fees are
@@ -55,5 +55,6 @@ public:
 
 
 	virtual ~CardThrteen(); // A Virtual Destructor
-};
 
+	virtual Card * CopyCard(CellPosition cPos);
+};

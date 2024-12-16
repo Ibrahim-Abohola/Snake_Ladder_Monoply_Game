@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Card.h"
+#include <fstream>
 
 // [ CardOne ] Summary:
 // Its Apply() Function: Decrements the value of the passing player’s wallet by a value
@@ -20,5 +21,12 @@ public:
 	                                                  // by decrementing the player's wallet by the walletAmount data member
 	
 	virtual ~CardOne(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& Infile);
+
 };
 

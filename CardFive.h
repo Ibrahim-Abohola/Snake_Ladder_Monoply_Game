@@ -2,6 +2,8 @@
 
 #include "Card.h"
 #include "Ladder.h"
+#include <fstream>
+
 
 class CardFive : public Card
 {
@@ -18,6 +20,12 @@ public:
 	//nothing)
 
 	virtual ~CardFive(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& Infile);
 };
 
 

@@ -9,6 +9,24 @@ CardOne::~CardOne(void)
 {
 }
 
+ Card* CardOne::CopyCard(CellPosition cPos)
+ {
+	CardOne* pCard;
+	pCard = new CardOne(cPos);
+
+	pCard->walletAmount = this->walletAmount;
+
+	return pCard;
+}
+
+ void CardOne::Save(ofstream& OutFile)
+ {
+ }
+
+ void CardOne::Load(ifstream& Infile)
+ {
+ }
+
 void CardOne::ReadCardParameters(Grid * pGrid)
 {
 	int x, y;

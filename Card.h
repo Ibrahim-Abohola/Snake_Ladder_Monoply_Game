@@ -28,5 +28,8 @@ public:
 	                                                   // It is a virtual function (implementation depends on Card Type)
 
 	virtual ~Card(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition) = 0;
+
 };
 

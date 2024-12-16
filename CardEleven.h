@@ -53,5 +53,9 @@ public:
 
 
 	virtual ~CardEleven(); // A Virtual Destructor
+
+	virtual Card* CopyCard(CellPosition cPos);
+
+
 };
 

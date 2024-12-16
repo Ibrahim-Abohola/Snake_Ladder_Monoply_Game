@@ -25,6 +25,8 @@ class Player
 	bool UsedAttack[4];
 
 
+	int RollingTimes;
+
 public:
 
 	Player(Cell* pCell, int playerNum); // Constructor making any needed initializations
@@ -77,5 +79,8 @@ public:
 	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
 	// for example: P0(wallet, turnCount)
 
+
+	int GetRollingTimes();
+	void SetRollingTimes(int cardnum);
 };
 

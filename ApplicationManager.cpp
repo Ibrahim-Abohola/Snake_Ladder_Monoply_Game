@@ -9,6 +9,12 @@
 #include "OpenGridAction.h"
 #include "inputdicevalue.h"
 
+#include "CopyCardAction.h"
+#include "CutCardAction.h"
+#include "PasteCardAction.h"
+#include "DeleteGameObjectAction.h"
+
+
 ///TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -64,21 +70,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 	case ADD_SNAKE:
-		// create an object of AddCardAction here
 		pAct = new AddSnakeAction(this);
 		break;
-
 	case ADD_CARD:
-		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
 		break;
 	case SAVE_GRID:
-		// create an object of AddCardAction here
 		pAct = new SaveGridAction(this);
 		break;
 	case OPEN_GRID:
-		// create an object of AddCardAction here
 		pAct = new OpenGridAction(this);
+		break;
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 	case EXIT:
@@ -89,12 +102,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case ROLL_DICE:
-		// create an object of RollDiceAction here
 		pAct = new RollDiceAction(this);
 		break;
-
 	case INPUT_DICE_VALUE:
-		// create an object of RollDiceAction here
 		pAct = new InputDiceValue(this);
 		break;
 	case TO_DESIGN_MODE:

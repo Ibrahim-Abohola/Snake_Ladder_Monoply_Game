@@ -9,6 +9,22 @@ CardFive::~CardFive(void)
 {
 }
 
+Card* CardFive::CopyCard(CellPosition cPos)
+{
+	CardFive* pCard;
+	pCard = new CardFive(cPos);
+	return pCard;
+
+}
+
+void CardFive::Save(ofstream& OutFile)
+{
+}
+
+void CardFive::Load(ifstream& Infile)
+{
+}
+
 void CardFive::ReadCardParameters(Grid* pGrid)
 {
 	//nothing to do
