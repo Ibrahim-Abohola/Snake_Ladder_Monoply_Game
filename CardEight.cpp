@@ -17,7 +17,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 
 	// 2-Gives the player  dice roll times.
 
-	pPlayer->SetRollingTimes(0);
+	pPlayer->SetRollingTimes(8);
 
 }
 
