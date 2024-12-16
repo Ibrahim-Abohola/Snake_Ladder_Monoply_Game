@@ -2,19 +2,19 @@
 
 #include "Action.h"
 
-class New : public Action
+class NewGame : public Action
 {
 
 	// No parameters for this action
 
 public:
-	New(ApplicationManager* pApp);
+	NewGame(ApplicationManager* pApp);
 
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
 
-	virtual ~New();
+	virtual ~NewGame();
 };
 
 

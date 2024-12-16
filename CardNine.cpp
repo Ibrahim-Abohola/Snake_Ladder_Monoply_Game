@@ -57,6 +57,10 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 
 }
 
+void CardNine::EditCard() {
+	
+}
+
 void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 {
 

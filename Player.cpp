@@ -83,8 +83,12 @@ void Player::IncrementturnCount() {
 
 void Player::SetstepCount(int CellNum) {
 	if (CellNum > 0 && CellNum <= NumHorizontalCells * NumVerticalCells) {
-		this->stepCount = CellNum;
+		stepCount = CellNum;
 	}
+	else if (CellNum <= 0)
+		stepCount = 0;
+	else
+		stepCount = 100;
 }
 
 int Player::GetstepCount() const {
@@ -280,8 +284,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	CellPosition pos;
 	if (GetWallet() > 0) {
 		CellPosition pos = pCell->GetCellPosition();
-		pos.AddCellNum(justRolledDiceNum);
-		int CellNum = pos.GetCellNumFromPosition(pos);
+		int CellNum = pos.GetCellNumFromPosition(pos) + justRolledDiceNum;
 		SetstepCount(CellNum);
 	}
 	else {
@@ -302,7 +305,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 		pGrid->UpdateInterface();
 	}
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (this->GetstepCount() > 99) {
+	if (this->GetstepCount() == 100) {
 		pGrid->SetEndGame(true);
 		pGrid->UpdatePlayerCell(this, CellPosition::GetCellPositionFromNum(99));
 		pGrid->PrintErrorMessage("Playe NO." + to_string(playerNum) + " won, Congratulations!");
@@ -316,6 +319,7 @@ void Player::AppendPlayerInfo(string& playersInfo) const
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
 }
+
 
 int Player::GetRollingTimes()
 {
@@ -339,8 +343,19 @@ void Player::SetRollingTimes(int cardnum)
 		RollingTimes = 1;
 }
 
+void Player::ResetPlayer() {
 
-
-
-
+	stepCount = 0;
+	wallet = 100;
+	justRolledDiceNum = 0;
+	SetTurnCount(0);
+	AttackCount = 0;
+	SpecialAttackNum = 0;
+	BurnCount = 0;
+	PoisonCount = 0;
+	Skip = false;
+	for (int i = 0;i < 4;i++) {
+		UsedAttack[i] = false;
+	}
+}
 

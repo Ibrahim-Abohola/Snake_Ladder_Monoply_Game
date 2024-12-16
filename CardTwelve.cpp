@@ -2,8 +2,6 @@
 #include "CardTwelve.h"
 
 
-
-
 int CardTwelve::CardPrice = 0;
 int CardTwelve::Fees = 0;
 Player* CardTwelve::CardOwner = NULL;
@@ -66,6 +64,11 @@ void CardTwelve::Load(ifstream& InFile) {
 		InFile >> pos;
 		position = position.GetCellPositionFromNum(pos);
 	}
+
+}
+
+
+void CardTwelve::EditCard() {
 
 }
 

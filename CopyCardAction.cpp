@@ -34,6 +34,7 @@ void CopyCardAction::Execute()
 
 		pGrid->SetClipboard(pGrid->IsCard(cardPosition));
 		pGrid->PrintErrorMessage("Copied sucsessfully");
+
 	}
 	else {
 		pGrid->PrintErrorMessage("Card cannot be copied, the cell has no card to copy");

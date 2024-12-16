@@ -202,7 +202,7 @@
     <ClCompile Include="InputDiceValue .cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="New.cpp">
+    <ClCompile Include="NewGame.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Snake.cpp">
@@ -256,6 +256,7 @@
     <ClCompile Include="SwitchToPlay.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+
     <ClCompile Include="DeleteGameObjectAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -277,6 +278,7 @@
     <ClCompile Include="CardEight.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -406,7 +408,7 @@
     <ClInclude Include="inputdicevalue.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="New.h">
+    <ClInclude Include="NewGame.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Snake.h">
@@ -454,6 +456,7 @@
     <ClInclude Include="SwitchToPlay.h">
       <Filter>Actions</Filter>
     </ClInclude>
+
     <ClInclude Include="CardThrteen.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
@@ -478,5 +481,6 @@
     <ClInclude Include="CardEight.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
+
   </ItemGroup>
 </Project>

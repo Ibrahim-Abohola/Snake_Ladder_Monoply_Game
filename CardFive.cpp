@@ -9,6 +9,7 @@ CardFive::~CardFive(void)
 {
 }
 
+
 Card* CardFive::CopyCard(CellPosition cPos)
 {
 	CardFive* pCard;
@@ -17,28 +18,31 @@ Card* CardFive::CopyCard(CellPosition cPos)
 
 }
 
-void CardFive::Save(ofstream& OutFile)
-{
-}
-
-void CardFive::Load(ifstream& Infile)
-{
-}
 
 void CardFive::ReadCardParameters(Grid* pGrid)
 {
 	//nothing to do
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
+void CardFive::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+}
 
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
+void CardFive::Load(ifstream& InFile) {
+	int  pos;
+	InFile >> pos;
+	position = position.GetCellPositionFromNum(pos);
 	
-	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
+}
 
-	
+void CardFive::EditCard() {
 
-	(pGrid->GetOutput())->ClearStatusBar();
+}
+
+
+void CardFive::ReadCardParameters(Grid* pGrid)
+{
+	//nothing to do
+
 }
 
 void CardFive::Apply(Grid* pGrid, Player* pPlayer)
@@ -54,11 +58,26 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 	// 2- Move forward by the same number of steps that you just rolled and moved
 	//already. (if you reach a ladder or a snake at the end of moving forward, take it)
 	int z = pPlayer->GetjustRolledDiceNum();
-	pPlayer->Move(pGrid, z);
-	Ladder* l = (pPlayer->GetCell()->HasLadder());
+	/*pPlayer->Move(pGrid, z);*/
+	pGrid->PrintErrorMessage("You will be moved forward by your just rolling dice number");
+	int newcell = pPlayer->GetCell()->GetCellPosition().GetCellNum() + z;
+	if(newcell <= 99)
+		pGrid->UpdatePlayerCell(pPlayer, CellPosition::GetCellPositionFromNum(newcell));
+	else {
+		pGrid->SetEndGame(true);
+		pGrid->UpdatePlayerCell(pPlayer, CellPosition::GetCellPositionFromNum(99));
+		pGrid->PrintErrorMessage("Playe NO." + to_string(pPlayer->GetPlayerNum()) + " won, Congratulations!");
+		pGrid->PrintErrorMessage("Better luck nect time for the other players!");
+	}
+	Ladder * l = (pPlayer->GetCell()->HasLadder());
+	Snake * s = (pPlayer->GetCell()->HasSnake());
 	if (l)
 	{
 		l->Apply(pGrid, pPlayer);
 
+	}
+	if (s)
+	{
+		s->Apply(pGrid,pPlayer);
 	}
 }

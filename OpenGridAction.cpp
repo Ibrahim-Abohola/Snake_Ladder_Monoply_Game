@@ -6,11 +6,11 @@
 #include "Snake.h"
 #include "Card.h"
 #include "CardOne.h"
-//#include "CardTwo.h"
-//#include "CardThree.h"
-//#include "CardFour.h"
-//#include "CardFive.h"
-//#include "CardSix.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
 //#include "CardSeven.h"
 //#include "CardEight.h"
 #include "CardNine.h"
@@ -104,7 +104,7 @@ void OpenGridAction::Execute() {
 
 		switch (cardnum)
 		{
-		/*case 1:
+		case 1:
 			pObj = new CardOne(-1);
 			break;
 		case 2:
@@ -122,7 +122,7 @@ void OpenGridAction::Execute() {
 		case 6:
 			pObj = new CardSix(-1);
 			break;
-		case 7:
+		/*case 7:
 			pObj = new CardSeven(-1);
 			break;
 		case 8:

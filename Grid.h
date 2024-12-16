@@ -70,6 +70,7 @@ public:
 	// ========= Other Getters =========
 	
 	Player* GetPlayerWithNumber(int);
+	void SetCurrentPlayer(int number); //setter for the current player to be used in the new game action
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	Snake* GetNextSnake(const CellPosition& position);
@@ -84,13 +85,15 @@ public:
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 		// We added this function once here because it is used many times by other classes
 
-	void Reset();
 
 	void LightningAttack(Player* attacker);
 
 	void SaveAllLadders(ofstream& OutFile);
 	void SaveAllSnakes(ofstream& OutFile);
 	void SaveAllCards(ofstream& OutFile);
+
+	Card* IsCard(CellPosition pos);
+
 
 	void ClearGrid(); //function that clears the grid from all its game objects to be used when loading a grid or anywhere else
 
@@ -99,6 +102,7 @@ public:
 	bool IsOverLapping(GameObject* newObj);
 
 	Card * IsCard(CellPosition pos);
+
 };
 
 

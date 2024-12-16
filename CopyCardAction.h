@@ -4,8 +4,10 @@
 
 class CopyCardAction : public Action
 {
+ 
+	// [Action Parameters]
+	CellPosition cardPosition; // 2- cell position of the card
 
-	CellPosition cardPosition; 
 public:
 
 	CopyCardAction(ApplicationManager* pApp);

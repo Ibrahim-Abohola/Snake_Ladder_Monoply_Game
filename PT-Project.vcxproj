@@ -147,6 +147,7 @@
     <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwo.cpp" />
+    <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThrteen.cpp" />
     <ClCompile Include="CardTwelve.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -199,7 +200,7 @@
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="Lightning.cpp" />
     <ClCompile Include="OpenGridAction.cpp" />
-    <ClCompile Include="New.cpp" />
+    <ClCompile Include="NewGame.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PasteCardAction.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="Attack.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardEight.h" />
+
     <ClInclude Include="CardFive.h" />
     <ClInclude Include="CardFour.h" />
     <ClInclude Include="Card10__13.h" />
@@ -268,7 +270,7 @@
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="OpenGridAction.h" />
-    <ClInclude Include="New.h" />
+    <ClInclude Include="NewGame.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />

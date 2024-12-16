@@ -82,5 +82,7 @@ public:
 
 	int GetRollingTimes();
 	void SetRollingTimes(int cardnum);
+	void ResetPlayer();
+
 };
 

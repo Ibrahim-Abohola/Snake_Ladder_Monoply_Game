@@ -26,6 +26,9 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
+	virtual void EditCard() = 0;
+	
+
 
 	virtual ~Card(); // A Virtual Destructor
 

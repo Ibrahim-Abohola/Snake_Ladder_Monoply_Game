@@ -10,6 +10,7 @@ CardTwo::~CardTwo(void)
 {
 }
 
+
 Card* CardTwo::CopyCard(CellPosition cPos)
 {
 	CardTwo* pCard;
@@ -20,14 +21,21 @@ Card* CardTwo::CopyCard(CellPosition cPos)
 	return pCard;
 }
 
-void CardTwo::Save(ofstream& OutFile)
-{
+void CardTwo::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.GetCellNum() << WalletAmount << endl;
 }
 
-void CardTwo::Load(ifstream& Infile)
-{
+void CardTwo::Load(ifstream& InFile) {
+	int  pos, walletamount;
+	InFile >> pos >> walletamount;
+	this->position = position.GetCellPositionFromNum(pos);
+	this->WalletAmount = walletamount;
+
 }
 
+void CardTwo::EditCard() {
+
+}
 void CardTwo::ReadCardParameters(Grid* pGrid)
 {
 	int x, y;
@@ -38,7 +46,7 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 	(pGrid->GetOutput()->PrintMessage("New CardTwo: Enter its wallet amount ... "));
 	(pGrid->GetInput())->GetPointClicked(x, y);
-	walletAmount = (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
+	WalletAmount = (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 
 	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
@@ -54,6 +62,8 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 
 }
 
+
+
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
 
@@ -65,6 +75,7 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
 	// 2- increment the wallet of pPlayer by the walletAmount data member of CardTwo
-	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);
+	pGrid->PrintErrorMessage("You wallet will be increased by the wallet amount of this card");
+	pPlayer->SetWallet(pPlayer->GetWallet() + WalletAmount);
 }
 

@@ -30,6 +30,25 @@ void CardThree::ReadCardParameters(Grid* pGrid)
 	return;
 }
 
+void CardThree::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
+}
+
+void CardThree::Load(ifstream& InFile) {
+	int  pos;
+	InFile >> pos;
+	position = position.GetCellPositionFromNum(pos);
+
+}
+
+void CardThree::EditCard() {
+
+}
+
+void CardThree::ReadCardParameters(Grid * pGrid) {
+	//no parameters for this card
+}
+
 void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 {
 
@@ -40,9 +59,8 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
-	// 2-Move the player forward to the start of the next ladder. (If no ladders ahead, do
-	//nothing)
-	Ladder  *L = pGrid->GetNextLadder((pPlayer->GetCell())->GetCellPosition());
-	pGrid->UpdatePlayerCell(pPlayer,L->GetEndPosition());//not sure if i should use this function or move ------>>>>please review it
+	// 2-Move the player forward to the start of the next ladder. (If no ladders ahead, do nothing)
+	Ladder  * L = pGrid->GetNextLadder((pPlayer->GetCell())->GetCellPosition());
+	pGrid->UpdatePlayerCell(pPlayer,L->GetEndPosition());
 	
 }

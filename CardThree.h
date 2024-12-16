@@ -16,6 +16,13 @@ public:
 	// Moving the player forward to the start of the next ladder. (If no ladders ahead, do
 	//nothing)
 
+	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
+
+	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
+
+	virtual void EditCard();
+
+
 	virtual ~CardThree(); // A Virtual Destructor
 
 	virtual Card* CopyCard(CellPosition cPos);

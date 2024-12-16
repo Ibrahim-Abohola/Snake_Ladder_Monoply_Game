@@ -21,7 +21,7 @@ int main()
 		//Update the drawings of the window after executing the action
 		AppManager.UpdateInterface();
 
-	} while(ActType != EXIT);
+	} while(ActType != EXIT && ActType != EXIT_GAME);
 
 
 	return 0;

@@ -1,29 +1,26 @@
-#include "SwitchToPlay.h"
+#include "NewGame.h"
 
 #include "Grid.h"
 #include "Player.h"
+#include "CardEleven.h"
 #include "CardTen.h"
 #include "CardTwelve.h"
-#include "CardEleven.h"
 #include "CardThrteen.h"
-
 
 #include <time.h> // used to in srand to generate random numbers with different seed
 
-SwitchToPlay::SwitchToPlay(ApplicationManager* pApp) : Action(pApp)
+NewGame::NewGame(ApplicationManager* pApp) : Action(pApp)
 {
-
 }
 
-void SwitchToPlay::ReadActionParameters()
+void NewGame::ReadActionParameters()
 {
 	// no parameters to read from user
 }
 
-void SwitchToPlay::Execute()
+void NewGame::Execute()
 {
-	pManager->GetGrid()->GetOutput()->CreatePlayModeToolBar();
-	Cell* c = new Cell(8, 0);
+	Cell * c = new Cell(8,0);
 	for (int i = 0; i < MaxPlayerCount;i++) {
 		pManager->GetGrid()->GetCurrentPlayer()->ClearDrawing(pManager->GetGrid()->GetOutput());
 		pManager->GetGrid()->GetCurrentPlayer()->SetCell(c);
@@ -37,9 +34,9 @@ void SwitchToPlay::Execute()
 	CardThrteen::SetOwner(NULL);
 	pManager->GetGrid()->SetCurrentPlayer(0);
 	pManager->GetGrid()->SetEndGame(false);
-	pManager->GetGrid()->UpdateInterface();
+	
 }
 
-SwitchToPlay::~SwitchToPlay()
+NewGame::~NewGame()
 {
 }
