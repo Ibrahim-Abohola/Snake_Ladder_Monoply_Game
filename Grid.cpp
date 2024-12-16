@@ -63,7 +63,7 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		
+		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
     	CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 }
@@ -124,6 +124,9 @@ void Grid::AdvanceCurrentPlayer()
 
 // ========= Other Getters =========
 
+void Grid::SetCurrentPlayer(int number) {
+	currPlayerNumber = number;
+}
 
 Player * Grid::GetCurrentPlayer() const
 {
@@ -148,7 +151,6 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 			
 			if (CellList[i][j]->HasLadder())
 				return CellList[i][j]->HasLadder();
-			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
 	}
@@ -303,25 +305,15 @@ void Grid::ClearGrid() {
 }
 
 
-
-void Grid::Reset()
-{
-	for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
-	{
-		for (int j = 0; j < NumHorizontalCells; j++) // left to right
-		{
-			if (CellList[i][j]->HasCard()) {
-				int num=CellList[i][j]->HasCard()->GetCardNumber();
-				if (num >= 10 && num <= 13)
-				{
-					CellList[i][j]->HasCard()->~Card();
-			}
-			
-			
-			}
-		}
+Card* Grid::IsCard(CellPosition pos) {
+	if (CellList[pos.VCell()][pos.HCell()]->HasCard()) {
+		GameObject* pObj = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		Card* pCard = dynamic_cast<Card*>(pObj);
+		return pCard;
 	}
+	return NULL;
 }
+
 
 Grid::~Grid()
 {

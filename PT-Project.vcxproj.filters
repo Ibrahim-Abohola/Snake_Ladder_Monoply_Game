@@ -28,11 +28,9 @@
     <Filter Include="Player">
       <UniqueIdentifier>{993adb1b-e6f5-4951-a441-ab84b1ccd65b}</UniqueIdentifier>
     </Filter>
-
     <Filter Include="SpecialAttacks">
       <UniqueIdentifier>{9dc762fd-18c8-49ba-bf4d-2a44c938c948}</UniqueIdentifier>
     </Filter>
-
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
@@ -186,7 +184,6 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
-
     <ClCompile Include="CardTwo.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
@@ -205,17 +202,15 @@
     <ClCompile Include="InputDiceValue .cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="New.cpp">
+    <ClCompile Include="NewGame.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-
     <ClCompile Include="Snake.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="AddSnakeAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-
     <ClCompile Include="CardEleven.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
@@ -234,7 +229,6 @@
     <ClCompile Include="Card10__13 .cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-
     <ClCompile Include="SaveGridAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -265,7 +259,6 @@
     <ClCompile Include="SwitchToPlay.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -395,10 +388,9 @@
     <ClInclude Include="inputdicevalue.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="New.h">
+    <ClInclude Include="NewGame.h">
       <Filter>Actions</Filter>
     </ClInclude>
-
     <ClInclude Include="Snake.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -411,19 +403,12 @@
     <ClInclude Include="CardNine.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="CardTen.h">
-      <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="CardThrteen.h">
-      <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
     <ClInclude Include="CardTwelve.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
     <ClInclude Include="Card10__13.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-
     <ClInclude Include="SaveGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -451,6 +436,5 @@
     <ClInclude Include="SwitchToPlay.h">
       <Filter>Actions</Filter>
     </ClInclude>
-
   </ItemGroup>
 </Project>

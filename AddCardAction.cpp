@@ -3,11 +3,11 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
-//#include "CardTwo.h"
-//#include "CardThree.h"
-//#include "CardFour.h"
-//#include "CardFive.h"
-//#include "CardSix.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
 //#include "CardSeven.h"
 //#include "CardEight.h"
 #include "CardNine.h"
@@ -66,7 +66,7 @@ void AddCardAction::Execute()
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
 	{
-	/*case 1:
+	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
 	case 2:
@@ -84,7 +84,7 @@ void AddCardAction::Execute()
 	case 6:
 		pCard = new CardSix(cardPosition);
 		break;
-	case 7:
+	/*case 7:
 		pCard = new CardSeven(cardPosition);
 		break;
 	case 8:

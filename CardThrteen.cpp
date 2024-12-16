@@ -73,6 +73,9 @@ bool CardThrteen::IsSet() {
 
 }
 
+void CardThrteen::EditCard() {
+}
+
 Player* CardThrteen::SetOwner(Player* pPlayer) {
 	CardOwner = pPlayer;
 	return CardOwner;

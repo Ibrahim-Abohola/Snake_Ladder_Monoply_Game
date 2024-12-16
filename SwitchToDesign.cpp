@@ -7,15 +7,7 @@
 
 SwitchToDesign::SwitchToDesign(ApplicationManager* pApp) : Action(pApp)
 {
-	pManager->GetGrid()->GetOutput()->CreateDesignModeToolBar();
-	Cell* c = new Cell(8, 0);
-	for (int i = 0; i < MaxPlayerCount; i++) {
-		pManager->GetGrid()->GetCurrentPlayer()->ClearDrawing(pManager->GetGrid()->GetOutput());
-		pManager->GetGrid()->GetCurrentPlayer()->SetCell(c);
-		pManager->GetGrid()->GetCurrentPlayer()->Draw(pManager->GetGrid()->GetOutput());
-		pManager->GetGrid()->AdvanceCurrentPlayer();
-	}
-	pManager->GetGrid()->Reset();//same as new
+
 }
 
 void SwitchToDesign::ReadActionParameters()
@@ -25,7 +17,8 @@ void SwitchToDesign::ReadActionParameters()
 
 void SwitchToDesign::Execute()
 {
-	
+	pManager->GetGrid()->GetOutput()->CreateDesignModeToolBar();
+
 }
 
 SwitchToDesign::~SwitchToDesign()

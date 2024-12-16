@@ -8,6 +8,13 @@
 #include "SaveGridAction.h"
 #include "OpenGridAction.h"
 #include "inputdicevalue.h"
+#include "NewGame.h"
+#include "SwitchToPlay.h"
+#include "SwitchToDesign.h"
+#include "CopyCardAction.h"
+#include "PasteCardAction.h"
+
+
 
 ///TODO: Add #include for all action types
 
@@ -72,6 +79,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
 		break;
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
 	case SAVE_GRID:
 		// create an object of AddCardAction here
 		pAct = new SaveGridAction(this);
@@ -82,10 +95,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case EXIT:
+		pGrid->ClearGrid();
+		break;
+	case EXIT_GAME:
+		pGrid->ClearGrid();
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToPlay(this);
 		break;
 
 	case ROLL_DICE:
@@ -97,8 +114,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of RollDiceAction here
 		pAct = new InputDiceValue(this);
 		break;
+	case NEW_GAME:
+		// create an object of RollDiceAction here
+		pAct = new NewGame(this);
+		break;
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToDesign(this);
 		break;
 
 		

@@ -53,6 +53,10 @@ void CardEleven::Load(ifstream& InFile) {
 
 }
 
+void CardEleven::EditCard() {
+	
+}
+
 void CardEleven::SetCardPrice(int price) {
 
 	if (price <= 0)  //validation

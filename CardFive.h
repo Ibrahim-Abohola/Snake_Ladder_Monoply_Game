@@ -17,6 +17,12 @@ public:
 	// Moving the player forward to the start of the next snake. (If no snakes ahead, do
 	//nothing)
 
+	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
+
+	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
+
+	virtual void EditCard();
+
 	virtual ~CardFive(); // A Virtual Destructor
 };
 

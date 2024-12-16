@@ -9,6 +9,23 @@ CardOne::~CardOne(void)
 {
 }
 
+void CardOne::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.GetCellNum() <<WalletAmount << endl;
+}
+
+void CardOne::Load(ifstream& InFile) {
+	int  pos, walletamount;
+	InFile >> pos >> walletamount;
+	this->position = position.GetCellPositionFromNum(pos);
+	this->WalletAmount = walletamount;
+	
+}
+
+void CardOne::EditCard() {
+	
+}
+
+
 void CardOne::ReadCardParameters(Grid * pGrid)
 {
 	int x, y;
@@ -18,12 +35,11 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 	(pGrid->GetOutput()->PrintMessage("New CardOne: Enter its wallet amount ..."));
-	(pGrid->GetInput())->GetPointClicked(x, y);//click to get to next option
 	int valid= (pGrid->GetInput())->GetInteger(pGrid->GetOutput());
 	if (valid >= 0)
-		walletAmount = valid;
+		WalletAmount = valid;
 	else 
-		walletAmount = 0;
+		WalletAmount = 0;
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 
 	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
@@ -50,5 +66,6 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid,pPlayer);
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
-	pPlayer->SetWallet(  pPlayer->GetWallet() - walletAmount);
+	pGrid->PrintErrorMessage("You wallet will be decreased by the wallet amount of this card");
+	pPlayer->SetWallet(  pPlayer->GetWallet() - WalletAmount);
 }

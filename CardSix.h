@@ -16,6 +16,13 @@ public:
 	// Move back by the same number of steps that you just rolled and moved
 	//already. (if you reach a ladder or a snake at the end of moving forward, take it)
 
+	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
+
+	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
+
+	virtual void EditCard();
+
+
 	virtual ~CardSix(); // A Virtual Destructor
 };
 

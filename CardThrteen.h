@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Card10__13.h"
-
 #include <fstream>
 
 
@@ -52,6 +51,8 @@ public:
 	virtual void Load(ifstream& Infile);// Saves the GameObject parameters to the file
 
 	virtual void Save(ofstream& OutFile);// Loads and Reads the GameObject parameters from the file
+
+	virtual void EditCard();
 
 
 	virtual ~CardThrteen(); // A Virtual Destructor

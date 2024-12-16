@@ -5,7 +5,7 @@
 class InputDiceValue  : public Action
 {
 
-	// No parameters for this action
+	int diceNumber;
 
 public:
 	InputDiceValue(ApplicationManager* pApp);

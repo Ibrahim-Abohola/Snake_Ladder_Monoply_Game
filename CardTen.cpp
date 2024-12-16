@@ -49,6 +49,10 @@ void CardTen::Load(ifstream& InFile) {
 	
 }
 
+void CardTen::EditCard() {
+	
+}
+
 
 void CardTen::SetCardPrice(int price) {
 
