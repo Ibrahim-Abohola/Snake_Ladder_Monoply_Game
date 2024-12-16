@@ -16,7 +16,7 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 	// 2-Gives the player  dice roll times.
 	
-	pPlayer->SetRollingTimes(2);
+	pPlayer->SetRollingTimes(7);
 
 
 }
