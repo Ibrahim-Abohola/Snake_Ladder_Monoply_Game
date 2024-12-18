@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Card10__13.h"
+#include "Station.h"
 #include <fstream>
 
 
@@ -20,7 +20,7 @@ Input data :
 i.Card price.
 ii.Fees to pay by passing players. */
 
-class CardThrteen : public Card10__13
+class CardThrteen : public Station
 {
 	// CardThrteen Parameters:
 

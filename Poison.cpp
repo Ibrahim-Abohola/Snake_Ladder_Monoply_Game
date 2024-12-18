@@ -15,7 +15,7 @@ Poison::~Poison()
 void Poison::ReadAttack() {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	if (!AttackedPlayer) {
+	if (AttackedPlayer) {
 		pOut->PrintMessage("Enter the number of the player that you want to attack (from 0 to 3)");
 		int number;
 		number = pIn->GetInteger(pOut);

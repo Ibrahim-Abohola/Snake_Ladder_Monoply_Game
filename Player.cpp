@@ -22,7 +22,6 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 		UsedAttack[i] = false;
 	}
 	// Make all the needed initialization or validations
-	RollingTimes = 1;
 }
 
 // ====== Setters and Getters ======
@@ -124,8 +123,12 @@ void Player::ClearDrawing(Output* pOut) const
 // ====== Game Functions ======
 
 
-void Player::SetSkipped() {
-	Skip = true;
+void Player::SetSkipped(bool skip) {
+	this->Skip = skip;
+}
+
+bool Player::GetSkipped() {
+	return Skip;
 }
 
 void Player::IsSkipped(Grid * pGrid) {
@@ -135,7 +138,7 @@ void Player::IsSkipped(Grid * pGrid) {
 	if (Skip) {
 		Skip = false;
 		IncrementturnCount();
-		pGrid->PrintErrorMessage("You are banned from playing this turn");
+		pGrid->PrintErrorMessage("Player " + to_string(playerNum) + "are banned from playing this turn");
 		pGrid->AdvanceCurrentPlayer();
 	}
 
@@ -175,8 +178,9 @@ bool Player::ChooseAttack(Grid * pGrid) {
 		return false;
 	}
 
-	pOut->PrintMessage("Would you like to use a special attack instead of recharging (y or n)  ");
+	pOut->PrintMessage("Would you like to use a special attack instead of recharging  (y or n) ");
 	string answer = pIn->GetSrting(pOut);
+	pGrid->GetOutput()->ClearStatusBar();
 	if (answer == "Y" || answer == "y") {
 		pGrid->PrintErrorMessage("Enter the number of the attack to choose (1.ice  2.fire  3.Lightning  4.poison) ");
 		SpecialAttackNum = pIn->GetInteger(pOut);
@@ -260,6 +264,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (GetTurnCount() == 3) {
 		if(!ChooseAttack(pGrid))
+		pGrid->GetOutput()->ClearStatusBar();
 		SetTurnCount(0);
 		int wallet = GetWallet()  + diceNumber * 10;
 		SetWallet(wallet);
@@ -268,7 +273,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	if (IsPoisoned()) { //check if the palyer is poisoned
-		pGrid->PrintErrorMessage("You are poisoned, you will lose 1 from your roll dice");
+		pGrid->PrintErrorMessage("You are poisoned, you will lose 1 from your roll dice ");
 		SetjustRolledDiceNum(diceNumber - 1);
 	}
 	else
@@ -321,25 +326,6 @@ void Player::AppendPlayerInfo(string& playersInfo) const
 	playersInfo += to_string(turnCount) + ")";
 }
 
-
-int Player::GetRollingTimes()
-{
-	return RollingTimes;
-
-}
-
-void Player::SetRollingTimes(int cardnum) 
-{
-	//Card* pCard = NULL;
-	//pCard = dynamic_cast<Card*> (this->GetCell()->HasCard()); //check if the player on a card
-	if (1) {
-
-		if (cardnum == 8) //if on a card seven
-			RollingTimes = 0;
-	}
-	else //at any other case
-		RollingTimes = 1;
-}
 
 void Player::ResetPlayer() {
 

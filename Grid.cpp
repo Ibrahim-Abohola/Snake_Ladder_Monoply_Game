@@ -65,6 +65,7 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
 		if (CellList[pos.VCell()][pos.HCell()]->GetGameObject()) {
 			delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+			CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 			return true;
 		}
     	CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
@@ -324,15 +325,14 @@ bool Grid::IsOverLapping(GameObject* newObj) {
 	return false;
 }
 
-Card* Grid::IsCard(CellPosition pos)
+
+GameObject * Grid::IsCard(CellPosition pos)
 {
 	if (CellList[pos.VCell()][pos.HCell()]->HasCard()) {
 
-		GameObject* pObj = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
-		Card* pCard = dynamic_cast<Card*>(pObj);
-		return pCard;
+		 return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 	}
-	return nullptr;
+	return NULL;
 }
 
 

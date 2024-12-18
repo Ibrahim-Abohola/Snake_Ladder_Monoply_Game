@@ -18,15 +18,15 @@ Input data :
 i.Card price.
 ii.Fees to pay by passing players. */
 
-class Card10__13 : public Card
+class Station : public Card
 {
 
 public:
-	Card10__13(const CellPosition& pos); // A Constructor takes card position
+	Station(const CellPosition& pos); // A Constructor takes card position
 
 	virtual bool IsSet() = 0;  //pure virtual function to be overriden in all drived classes to check if the card inputs are set or not
-	void BuyCard(Grid* pGrid, Player* pPlayer,int CardPrice,Player *& Owner); //Function that handles all operations regarding buying the card and it has same implementation across all drived classes 
-	void PayCardFees(Grid* pGrid, Player* pPlayer, int Fees, Player *& Owner); //Function that handles the fees that must be paid to the owner of the card and it has same implementation across all drived classes
+	void BuyStation(Grid* pGrid, Player* pPlayer,int CardPrice,Player *& Owner); //Function that handles all operations regarding buying the card and it has same implementation across all drived classes 
+	void PayStationFees(Grid* pGrid, Player *& pPlayer, int Fees, Player *& Owner); //Function that handles the fees that must be paid to the owner of the card and it has same implementation across all drived classes
 	bool IsBought(Player* CardOwner);  //Function the checks if the card is bought or not
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: Cell to be moved to
@@ -34,6 +34,7 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardNine on the passed Player
 	// by moving the player to the cell that is taken as data member
 
-	virtual ~Card10__13(); // A Virtual Destructor
+
+	virtual ~Station(); // A Virtual Destructor
 };
 

@@ -92,15 +92,13 @@ public:
 	void SaveAllSnakes(ofstream& OutFile);   //to save all snakes
 	void SaveAllCards(ofstream& OutFile);    //to save all cards
 
-	Card* IsCard(CellPosition pos);         //to check if the user clicked on card to be used in the copy action
-
 	bool IsOverLapping(GameObject* newObj);
 
 	void ClearGrid(); //function that clears the grid from all its game objects to be used when loading a grid or anywhere else
 
 	~Grid(); // A destructor for any needed deallcations
 
-
+	GameObject* IsCard(CellPosition pos);
 };
 
 

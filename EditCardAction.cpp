@@ -31,8 +31,8 @@ void EditCardAction::Execute()
 	Grid* pGrid = pManager->GetGrid();
 
 	if (pGrid->IsCard(cardPosition)) {
-		Card* pCard;
-		pCard = pGrid->IsCard(cardPosition);
+		
+		Card* pCard = dynamic_cast<Card*>(pGrid->IsCard(cardPosition));
 		pCard->EditCard(pGrid);
 
 	}

@@ -24,8 +24,7 @@ class Player
 	bool Skip;   //used when the player should skip next turn
 	bool UsedAttack[4]; //bool array to track the usage of the player to the attacks
 
-	int RollingTimes;      //to be used in special cards and other situations
-
+	
 public:
 
 	Player(Cell* pCell, int playerNum); // Constructor making any needed initializations
@@ -60,7 +59,8 @@ public:
 	// ====== Game Functions ======
 
 
-	void SetSkipped();
+	void SetSkipped(bool);
+	bool GetSkipped();
 	void IsSkipped(Grid*);
 	void SetBurnCount();
 	bool IsBurned();
@@ -78,9 +78,6 @@ public:
 	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
 	// for example: P0(wallet, turnCount)
 
-
-	int GetRollingTimes();
-	void SetRollingTimes(int cardnum);
 	void ResetPlayer();
 
 };

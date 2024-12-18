@@ -61,15 +61,11 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 		pGrid->UpdatePlayerCell(pPlayer, CellPosition::GetCellPositionFromNum(newcell));
 	else
 		pGrid->UpdatePlayerCell(pPlayer, CellPosition::GetCellPositionFromNum(1));
-	Ladder* l = (pPlayer->GetCell()->HasLadder());
-	Snake * s = (pPlayer->GetCell()->HasSnake());
-	if (l)
-	{
-		l->Apply(pGrid, pPlayer);
 
-	}
-	if (s)
+	//apply the effect of the game object in the distination cell if exist
+	if (pPlayer->GetCell()->GetGameObject())
 	{
-		s->Apply(pGrid,pPlayer);
+		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
 	}
 }

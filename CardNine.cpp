@@ -74,4 +74,11 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->GetInput()->GetPointClicked(x,y);
 	pGrid->UpdatePlayerCell(pPlayer, CellPos);
 
+	//apply the effect of the game object in the distination cell if exist
+	if (pPlayer->GetCell()->GetGameObject())
+	{
+		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
+	}
+
 }

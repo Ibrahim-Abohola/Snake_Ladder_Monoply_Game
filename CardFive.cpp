@@ -50,10 +50,6 @@ void CardFive::ReadCardParameters(Grid* pGrid)
 void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 {
 	
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
@@ -71,15 +67,11 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 		pGrid->PrintErrorMessage("Playe NO." + to_string(pPlayer->GetPlayerNum()) + " won, Congratulations!");
 		pGrid->PrintErrorMessage("Better luck nect time for the other players!");
 	}
-	Ladder * l = (pPlayer->GetCell()->HasLadder());
-	Snake * s = (pPlayer->GetCell()->HasSnake());
-	if (l)
-	{
-		l->Apply(pGrid, pPlayer);
 
-	}
-	if (s)
+	//apply the effect of the game object in the distination cell if exist
+	if (pPlayer->GetCell()->GetGameObject())  
 	{
-		s->Apply(pGrid,pPlayer);
+		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
 	}
 }

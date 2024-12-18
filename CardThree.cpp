@@ -46,7 +46,15 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
 	// 2-Move the player forward to the start of the next ladder. (If no ladders ahead, do nothing)
+	pGrid->PrintErrorMessage("You will be transfered to the start of the next ladder if exist");
 	Ladder  * L = pGrid->GetNextLadder((pPlayer->GetCell())->GetCellPosition());
 	pGrid->UpdatePlayerCell(pPlayer,L->GetEndPosition());
+
+	//apply the effect of the game object in the distination cell if exist
+	if (pPlayer->GetCell()->GetGameObject())
+	{
+		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
+	}
 	
 }

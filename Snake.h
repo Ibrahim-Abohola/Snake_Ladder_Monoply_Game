@@ -24,6 +24,7 @@ public:
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
+
 	virtual ~Snake(); // Virtual destructor
 
 	//=============================================================================================//

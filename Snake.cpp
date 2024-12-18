@@ -15,12 +15,20 @@ void Snake::Draw(Output* pOut) const
 
 void Snake::Apply(Grid* pGrid, Player* pPlayer)
 {
-
+	int x, y;
 	// 1- Print a message "You have reached a snake. Click to continue ..." and wait mouse click
 	pGrid->GetOutput()->PrintMessage("You have reached a snake. Click to continue ...");
+	pGrid->GetInput()->GetPointClicked(x, y);
 	// 2- Apply the snake's effect by moving the player to the endCellPos
 	//    Review the "pGrid" functions and decide which function can be used for that
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
+
+	//apply the effect of the game object in the distination cell if exist
+	if (pPlayer->GetCell()->GetGameObject())  
+	{
+		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
+	}
 }
 
 void Snake::Save(ofstream& OutFile)
@@ -93,5 +101,4 @@ bool Snake::IsOverLapping(GameObject* newObj)
 		return false;    // If the object is not a ladder or not located in the same column, there is no overlapping.
 
 }
-
 

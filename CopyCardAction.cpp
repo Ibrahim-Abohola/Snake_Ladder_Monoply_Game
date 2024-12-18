@@ -32,7 +32,8 @@ void CopyCardAction::Execute()
 
 	if (pGrid->IsCard(cardPosition)) {
 
-		pGrid->SetClipboard(pGrid->IsCard(cardPosition));
+		Card* pCard = dynamic_cast<Card*>(pGrid->IsCard(cardPosition));
+		pGrid->SetClipboard(pCard);
 		pGrid->PrintErrorMessage("Copied sucsessfully");
 
 	}

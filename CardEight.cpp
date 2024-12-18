@@ -3,6 +3,7 @@
 
 CardEight::CardEight(const CellPosition& pos) :Card(pos)
 {
+	cardNumber = 8;
 }
 
 
@@ -48,7 +49,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You are banned from rolling the dice next turn..........click to continue");
 	int x, y;
 	pGrid->GetInput()->GetPointClicked(x, y);
-	pPlayer->SetRollingTimes(cardNumber);
+	pPlayer->SetSkipped(true);
 
 }
 

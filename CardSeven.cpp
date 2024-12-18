@@ -2,6 +2,7 @@
 
 CardSeven::CardSeven(const CellPosition& pos) :Card(pos)
 {
+	cardNumber = 7;
 }
 
 
@@ -25,9 +26,11 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 
 	// 2-Gives the player  dice roll times.
-	
-	pPlayer->SetRollingTimes(cardNumber);
-
+  //pPlayer->SetRollingTimes(cardNumber);
+	pGrid->PrintErrorMessage("Congratulations, you have anthor roll dice");
+	for (int i = 0;i < 3;i++) {
+		pGrid->AdvanceCurrentPlayer();
+	}
 
 }
 

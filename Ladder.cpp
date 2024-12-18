@@ -43,18 +43,21 @@ Ladder::~Ladder()
 
 void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 {
-
-
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-	// == Here are some guideline steps (numbered below) to implement this function ==
-
+	int x, y;
 	// 1- Print a message "You have reached a ladder. Click to continue ..." and wait mouse click
 
 	pGrid->GetOutput()->PrintMessage("You have reached a ladder. Click to continue ...");
+	pGrid->GetInput()->GetPointClicked(x, y);
 	// 2- Apply the ladder's effect by moving the player to the endCellPos	
 	//    Review the "pGrid" functions and decide which function can be used for that
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
+
+	//apply the effect of the game object in the distination cell if exist
+	if (pPlayer->GetCell()->GetGameObject())  
+	{
+		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
+	}
 }
 
 

@@ -16,7 +16,7 @@ Ice::~Ice()
 void Ice::ReadAttack() {
 	Output * pOut = pGrid->GetOutput();
 	Input * pIn = pGrid->GetInput();
-	if (!AttackedPlayer) {
+	if (AttackedPlayer) {
 		pOut->PrintMessage("Enter the number of the player that you want to attack (from 0 to 3)");
 		int number;
 		number = pIn->GetInteger(pOut);
@@ -32,6 +32,7 @@ void Ice::ReadAttack() {
 void Ice::ExcuteAttack() {
 	//excutes the attack by preventing the attacked player from rolling the dice the next turn
 	ReadAttack();
-	AttackedPlayer->SetSkipped(); //set the skip bool
+
+	AttackedPlayer->SetSkipped(true); //set the skip bool
 	AttackedPlayer->IsSkipped(pGrid);  //makes the player skip the next turn
 }

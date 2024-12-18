@@ -223,7 +223,7 @@
     <ClCompile Include="CardTwelve.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="Card10__13 .cpp">
+    <ClCompile Include="Station.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
     <ClCompile Include="SaveGridAction.cpp">
@@ -281,6 +281,7 @@
     <ClCompile Include="EditCardAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="CardTen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -428,7 +429,7 @@
     <ClInclude Include="CardTwelve.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="Card10__13.h">
+    <ClInclude Include="Station.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
     <ClInclude Include="SaveGridAction.h">

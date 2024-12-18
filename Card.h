@@ -28,11 +28,11 @@ public:
 	                                                   // It is a virtual function (implementation depends on Card Type)
 	virtual void EditCard(Grid *) = 0;
 	
+	virtual Card* CopyCard(CellPosition) = 0;
 
 
 	virtual ~Card(); // A Virtual Destructor
 
-	virtual Card* CopyCard(CellPosition) = 0;
 
 };
 

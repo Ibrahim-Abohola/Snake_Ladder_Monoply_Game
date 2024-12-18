@@ -28,7 +28,7 @@ void CutCardAction::ReadActionParameters()
 	// 3- Read the "PastePos" parameter (its cell position) and set its data member
 	pOut->PrintMessage("Cut Card : Click on the cell that you want to paste on");
 	PastePos = pIn->GetCellClicked();
-	while ((!PastePos. IsValidCell()) || PastePos.GetCellNum() == 1 || PastePos.GetCellNum() == 99) {
+	while ((!PastePos.IsValidCell()) || PastePos.GetCellNum() == 1 || PastePos.GetCellNum() == 99) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion");
 		PastePos = pIn->GetCellClicked();
 	}
@@ -45,13 +45,19 @@ void CutCardAction::Execute()
 
 	if (pGrid->IsCard(CardToCopyPos)) {
 
-		pGrid->SetClipboard(pGrid->IsCard(CardToCopyPos));
-		pGrid->RemoveObjectFromCell(CardToCopyPos);
-
-		Card* pCard = pGrid->GetClipboard()->CopyCard(PastePos);
-		pGrid->AddObjectToCell(pCard);
-		pGrid->UpdateInterface();
-		pGrid->PrintErrorMessage("Cut sucsessfully");
+		Card* pCard = dynamic_cast<Card*>(pGrid->IsCard(CardToCopyPos));
+		pGrid->SetClipboard(pCard);		
+		if (pGrid->AddObjectToCell(pGrid->GetClipboard()->CopyCard(PastePos))) {
+			//reset the clipboard after the cut action
+			pGrid->SetClipboard(NULL);
+			pGrid->RemoveObjectFromCell(CardToCopyPos);
+			pGrid->UpdateInterface();
+			pGrid->PrintErrorMessage("Cut sucsessfully");
+		}
+		else {
+			pGrid->PrintErrorMessage("Error: Cell already has an object");
+			pGrid->SetClipboard(NULL);
+		}
 	}
 	else {
 		pGrid->PrintErrorMessage("Card cannot be cut, the cell has no card to cut");
