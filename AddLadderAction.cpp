@@ -47,7 +47,7 @@ void AddLadderAction::ReadActionParameters()
 	// Read the startPos parameter
 	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
-	while ((!startPos.IsValidCell()) || startPos.GetCellNum() == 1 || startPos.HCell() == 0) {
+	while ((!startPos.IsValidCell()) || startPos.GetCellNum() == 1 || startPos.GetCellNum() == 99) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
 		startPos = pIn->GetCellClicked();
 	}
@@ -55,7 +55,7 @@ void AddLadderAction::ReadActionParameters()
 	// Read the endPos parameter
 	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
-	while ((!endPos.IsValidCell()) || endPos.HCell() == 8) {
+	while ((!endPos.IsValidCell()) || endPos.GetCellNum() == 99) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
 		endPos = pIn->GetCellClicked();
 	}

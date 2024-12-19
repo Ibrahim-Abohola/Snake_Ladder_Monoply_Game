@@ -48,21 +48,17 @@ void AddSnakeAction::ReadActionParameters()
 	// Read the startPos parameter
 	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
-	while ((!startPos.IsValidCell()) || startPos.HCell() == 99) {
+	while ((!startPos.IsValidCell()) || startPos.GetCellNum() == 99 || startPos.GetCellNum() == 1) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
 		endPos = pIn->GetCellClicked();
 	}
 	// Read the endPos parameter
 	pOut->PrintMessage("New Snake: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
-	while ((!endPos.IsValidCell()) || endPos.HCell() == 0) {
+	while ((!endPos.IsValidCell()) || endPos.GetCellNum() == 1 || endPos.GetCellNum() == 99) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
 		endPos = pIn->GetCellClicked();
 	}
-
-
-	///TODO: Make the needed validations on the read parameters
-
 
 	// Clear messages
 	pOut->ClearStatusBar();
@@ -97,6 +93,5 @@ void AddSnakeAction::Execute()
 	}
 	else
 		pGrid->PrintErrorMessage("Error: Cannot draw the sanke because it overlapps with anthor object ! Click to continue ...");
-
 
 }

@@ -18,10 +18,10 @@ void DeleteGameObjectAction::ReadActionParameters()
 
 	// 2- Read the "cardPosition" parameter (its cell position) and set its data member
 	pOut->PrintMessage("Delete GameObject Action : Click on the object that you want to delete");
-	cardPosition = pIn->GetCellClicked();
-	while ((!cardPosition.IsValidCell()) || cardPosition.GetCellNum() == 1 || cardPosition.GetCellNum() == 99) {
+	Position = pIn->GetCellClicked();
+	while ((!Position.IsValidCell()) || Position.GetCellNum() == 1 || Position.GetCellNum() == 99) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
-		cardPosition = pIn->GetCellClicked();
+		Position = pIn->GetCellClicked();
 	}
 }
 
@@ -33,7 +33,7 @@ void DeleteGameObjectAction::Execute()
 	// 2- Check if the cell the user clicked and want to delete it's card has a card or not
 	Grid* pGrid = pManager->GetGrid();
 		
-	if (pGrid->RemoveObjectFromCell(cardPosition)) {
+	if (pGrid->RemoveObjectFromCell(Position)) {
 		pGrid->UpdateInterface();
 		pGrid->PrintErrorMessage("Deleted successfully");
 	}

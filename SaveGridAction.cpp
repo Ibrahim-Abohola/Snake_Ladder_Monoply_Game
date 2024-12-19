@@ -30,7 +30,7 @@ void SaveGridAction::ReadActionParameters() {
 
 void SaveGridAction::Execute() {
 	ReadActionParameters();
-	SaveGrid.open(FileName,ios::app); // opening the file in the append mode to write into it 
+	SaveGrid.open(FileName,ios::out); // opening the file in the append mode to write into it 
 	Grid* pGrid = pManager->GetGrid();
 	if (SaveGrid.fail()) {  //check if there is a problem when opening the file
 		pGrid->PrintErrorMessage("Error, couldn't open the file");

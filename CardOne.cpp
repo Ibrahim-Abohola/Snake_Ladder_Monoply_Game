@@ -21,7 +21,7 @@ CardOne::~CardOne(void)
 
 
 void CardOne::Save(ofstream& OutFile) {
-	OutFile << GetCardNumber() << " " << position.GetCellNum() <<WalletAmount << endl;
+	OutFile << GetCardNumber() << " " << position.GetCellNum()<<" " << WalletAmount << endl;
 }
 
 void CardOne::Load(ifstream& InFile) {

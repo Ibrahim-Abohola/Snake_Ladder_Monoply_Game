@@ -23,7 +23,7 @@ Card* CardTwo::CopyCard(CellPosition cPos)
 }
 
 void CardTwo::Save(ofstream& OutFile) {
-	OutFile << GetCardNumber() << " " << position.GetCellNum() << WalletAmount << endl;
+	OutFile << GetCardNumber() << " " << position.GetCellNum() <<" "<< WalletAmount << endl;
 }
 
 void CardTwo::Load(ifstream& InFile) {

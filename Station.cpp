@@ -20,7 +20,6 @@ void Station::BuyStation(Grid* pGrid, Player* pPlayer,int CardPrice, Player * & 
 		int x, y;
 		pGrid->PrintErrorMessage("Do you wish to buy this Station and own all cards with the same type in the grid for price = " + to_string(CardPrice) + " (y / n)");
 		string buy = pGrid->GetInput()->GetSrting(pGrid->GetOutput());
-		pGrid->GetInput()->GetPointClicked(x,y);
 		if (buy == "y" || buy =="Y") {
 			if (pPlayer->GetWallet() >= CardPrice)
 			{
@@ -49,17 +48,21 @@ void Station::PayStationFees(Grid * pGrid,Player *& pPlayer,int Fees, Player * &
 	if (pPlayer != Owner && Owner != NULL) {  //check if the current player is the owner
 		pGrid->PrintErrorMessage("You reached a card owned by anthor player ... click to continue ");
 		pGrid->PrintErrorMessage("You have to pay some fees if you wish to continue  ... click to continue ");
-		if (pPlayer->GetWallet() >= Fees){
+		if (pPlayer->GetWallet() >= Fees) {
 			pPlayer->SetWallet(pPlayer->GetWallet() - Fees); //deduct fees from the player's wallet
 			Owner->SetWallet(Owner->GetWallet() + Fees);   //increasing fees to into the owner's wallet
 		}
-	/*	else {
-			pGrid->PrintErrorMessage("You don't have enough fees to pass the cell .....click to continue ");
-			pGrid->GetInput()->GetPointClicked(x, y);
-		}*/
+		/*	else {
+				pGrid->PrintErrorMessage("You don't have enough fees to pass the cell .....click to continue ");
+				pGrid->GetInput()->GetPointClicked(x, y);
+			}*/
+	}
+	else if (pPlayer == Owner) {
+		pGrid->PrintErrorMessage("You are the owner of the card thus no fees to pay ....click to continue ");
+		pGrid->GetInput()->GetPointClicked(x, y);
 	}
 	else {
-		pGrid->PrintErrorMessage("You are the owner of the card thus no fees to pay ....click to continue ");
+		pGrid->PrintErrorMessage("There is no owner for the station yet thus no fees to pay ...........click to continue");
 		pGrid->GetInput()->GetPointClicked(x, y);
 	}
 

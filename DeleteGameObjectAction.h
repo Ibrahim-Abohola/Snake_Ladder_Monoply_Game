@@ -4,7 +4,7 @@
 
 class DeleteGameObjectAction : public Action
 {
-	CellPosition cardPosition; // 1- cell position of the card
+	CellPosition Position; // 1- cell position of the card
 
 public:
 

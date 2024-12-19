@@ -36,7 +36,7 @@ void InputDiceValue::ReadActionParameters()
 	pGrid->GetOutput()->ClearStatusBar();
 	//pIn->GetPointClicked(x, y);
 	//validation on dice number the loop doesn't stop unless the user enters a valid dice number
-	while (diceNumber <= 0 || diceNumber >= 6) {
+	while (diceNumber <= 0 || diceNumber > 6) {
 		pGrid->PrintErrorMessage("You entered an invalid diceNumber, please enter a number from 1 to 6 ");
 		diceNumber = pIn->GetInteger(pOut);
 		msg = "you entered " + to_string(diceNumber);

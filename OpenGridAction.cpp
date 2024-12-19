@@ -11,8 +11,8 @@
 #include "CardFour.h"
 #include "CardFive.h"
 #include "CardSix.h"
-//#include "CardSeven.h"
-//#include "CardEight.h"
+#include "CardSeven.h"
+#include "CardEight.h"
 #include "CardNine.h"
 #include "CardTen.h"
 #include "CardEleven.h"
@@ -84,7 +84,7 @@ void OpenGridAction::Execute() {
 
 	OpenGrid >> count_snakes;	
 
-	for (int i = 0;i < count_ladders && !OpenGrid.eof();i++) {   //to loop from the first line that has snake till the last line that has snake in the grid, added eof just to be safe
+	for (int i = 0;i < count_snakes && !OpenGrid.eof();i++) {   //to loop from the first line that has snake till the last line that has snake in the grid, added eof just to be safe
 		pObj = new Snake(-1, -1);  //create a new snake  
 		pObj->Load(OpenGrid);     //load snake information
 		pGrid->AddObjectToCell(pObj);   //add the snake to the cell
@@ -97,7 +97,7 @@ void OpenGridAction::Execute() {
 
 	OpenGrid >> count_cards;
 
-	for (int i = 0;i < count_ladders && !OpenGrid.eof();i++) { //to loop from the first line that has cards till the last line that has card in the grid, added eof just to be safe
+	for (int i = 0;i < count_cards && !OpenGrid.eof();i++) { //to loop from the first line that has cards till the last line that has card in the grid, added eof just to be safe
 		
 		int cardnum;
 		OpenGrid >> cardnum;
@@ -122,13 +122,12 @@ void OpenGridAction::Execute() {
 		case 6:
 			pObj = new CardSix(-1);
 			break;
-		/*case 7:
+		case 7:
 			pObj = new CardSeven(-1);
 			break;
 		case 8:
 			pObj = new CardEight(-1);
 			break;
-			*/
 		case 9:
 			pObj = new CardNine(-1);
 			break;
