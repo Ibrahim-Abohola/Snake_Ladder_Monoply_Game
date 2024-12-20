@@ -80,6 +80,14 @@ void AddSnakeAction::Execute()
 	if (!pGrid->IsOverLapping(pSnake)) {
 
 		// Add the card object to the GameObject of its Cell:
+		if (!(startPos.IsValidCell() && endPos.IsValidCell())) {
+			pGrid->PrintErrorMessage("Error : invalid position for the snake ");
+			return;
+		}
+		if (startPos.HCell() != endPos.HCell() || startPos.VCell() >= endPos.VCell()){
+			pGrid->PrintErrorMessage("Error : invalid position for the snake ");
+		return;
+	}
 		bool added = pGrid->AddObjectToCell(pSnake);
 
 		// if the GameObject cannot be added
@@ -88,10 +96,13 @@ void AddSnakeAction::Execute()
 		{
 			// Print an appropriate message
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			delete pSnake; //delete the object that wasn't added
 		}
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
 	}
-	else
+	else {
 		pGrid->PrintErrorMessage("Error: Cannot draw the sanke because it overlapps with anthor object ! Click to continue ...");
+		delete pSnake; //delete the object that wasn't added
+	}
 
 }

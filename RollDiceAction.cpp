@@ -22,9 +22,7 @@ void RollDiceAction::Execute()
 	//(pManager->GetGrid())->GetCurrentPlayer()->GetCell()->GetCellPosition();
 
 	if (pManager->GetGrid()->GetCurrentPlayer()->GetSkipped()) {
-		(pManager->GetGrid())->GetCurrentPlayer()->IncrementturnCount();
-		(pManager->GetGrid())->GetCurrentPlayer()->SetSkipped(false);
-		(pManager->GetGrid())->AdvanceCurrentPlayer();
+		(pManager->GetGrid())->GetCurrentPlayer()->IsSkipped(pManager->GetGrid());
 		return;
 	}
 		// -- If not ended, do the following --:
@@ -33,7 +31,7 @@ void RollDiceAction::Execute()
 			srand((int)time(NULL)); // time is for different seed each run
 			int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
 
-			pManager->GetGrid()->PrintErrorMessage("the dice was rolled with dice number = " + to_string(diceNumber));
+			pManager->GetGrid()->PrintErrorMessage("Player " +to_string(pManager->GetGrid()->GetCurrentPlayer()->GetPlayerNum()) + " rolled the dice with number = " + to_string(diceNumber));
 			int x, y;
 			//pManager->GetGrid()->GetInput()->GetPointClicked(x, y);
 			// 3- Get the "current" player from pGrid

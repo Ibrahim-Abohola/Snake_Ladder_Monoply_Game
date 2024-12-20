@@ -33,6 +33,15 @@ Card* CardEleven::CopyCard(CellPosition cPos)
 	return pCard;
 }
 
+void CardEleven::SetLoaded() {
+	Loaded = 0;
+}
+
+void CardEleven::SetSaved() {
+	Saved = 0;
+}
+
+
 
 void CardEleven::Save(ofstream& OutFile) {
 	//special card 
@@ -46,6 +55,8 @@ void CardEleven::Save(ofstream& OutFile) {
 		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
 
 }
+
+
 
 void CardEleven::Load(ifstream& InFile) {
 	int price, pos, fees;

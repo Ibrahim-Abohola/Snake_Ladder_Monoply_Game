@@ -138,14 +138,17 @@ void Player::IsSkipped(Grid * pGrid) {
 	if (Skip) {
 		Skip = false;
 		IncrementturnCount();
-		pGrid->PrintErrorMessage("Player " + to_string(playerNum) + "are banned from playing this turn");
+		if (GetTurnCount() >= 3) {
+			SetTurnCount(0);
+		}
+		pGrid->PrintErrorMessage("Player " + to_string(playerNum) + " are banned from playing this turn");
 		pGrid->AdvanceCurrentPlayer();
 	}
 
 }
 
 void Player::SetBurnCount() {
-	BurnCount += 3;
+	BurnCount = 3;
 }
 
 bool Player::IsBurned() {
@@ -159,7 +162,7 @@ bool Player::IsBurned() {
 }
 
 void Player::SetPoisonCount() {
-	PoisonCount += 3;
+	PoisonCount = 5;
 }
 
 bool Player::IsPoisoned() {
@@ -182,13 +185,13 @@ bool Player::ChooseAttack(Grid * pGrid) {
 	string answer = pIn->GetSrting(pOut);
 	pGrid->GetOutput()->ClearStatusBar();
 	if (answer == "Y" || answer == "y") {
-		pGrid->PrintErrorMessage("Enter the number of the attack to choose (1.ice  2.fire  3.Lightning  4.poison) ");
+		pOut->PrintMessage("Enter the number of the attack to choose (1.ice  2.fire  3.Lightning  4.poison) ");
 		SpecialAttackNum = pIn->GetInteger(pOut);
 		while (SpecialAttackNum < 1 || SpecialAttackNum > 4) {
-			pOut->PrintMessage("Invalid Number, please enter a number from 1 to 4");
+			pOut->PrintMessage("Invalid Number, please enter a number from 1 to 4 ");
 			SpecialAttackNum = pIn->GetInteger(pOut);
 		}
-		if (!UsedAttack[SpecialAttackNum])
+		if (!UsedAttack[SpecialAttackNum - 1]) {
 			switch (SpecialAttackNum)
 			{
 			case 1:
@@ -208,9 +211,10 @@ bool Player::ChooseAttack(Grid * pGrid) {
 				UsedAttack[3] = true;
 				break;
 			}
+		}
 		else
 		{
-			pOut->PrintMessage("You used this attack befor, you can only use two unique special attacks .......click to continue");
+			pGrid->PrintErrorMessage("You used this attack befor, you can only use two unique special attacks .......click to continue");
 			ChooseAttack(pGrid);
 		}
 		return true;
@@ -220,14 +224,13 @@ bool Player::ChooseAttack(Grid * pGrid) {
 }
 
 void Player::IsLightned(Grid * pGrid) {
-	pGrid->PrintErrorMessage("You will lost 20 coins from your wallet becuase anthor player used lighting attack");
+
 	SetWallet(GetWallet() - 20);
-	pGrid->UpdateInterface();
 	
 }
 
 void Player::UseAttack(int attacktype,Grid* pGrid) {
-	Attack* AttackType;
+	Attack * AttackType;
 	switch (attacktype) {
 	case 1:
 		AttackType = new Ice(pGrid, this);
@@ -244,7 +247,6 @@ void Player::UseAttack(int attacktype,Grid* pGrid) {
 	}
 	if (AttackType) {
 		AttackCount++;
-		SetTurnCount(0);
 
 		AttackType->ExcuteAttack();  //calls the excute function of the choosen attack
 
@@ -262,12 +264,13 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	IncrementturnCount();
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	if (GetTurnCount() == 3) {
-		if(!ChooseAttack(pGrid))
-		pGrid->GetOutput()->ClearStatusBar();
+	if (GetTurnCount() >= 3) {
 		SetTurnCount(0);
-		int wallet = GetWallet()  + diceNumber * 10;
-		SetWallet(wallet);
+		if (!ChooseAttack(pGrid)) {
+			pGrid->GetOutput()->ClearStatusBar();
+			int wallet = GetWallet() + diceNumber * 10;
+			SetWallet(wallet);
+		}
 		return;
 	}
 	

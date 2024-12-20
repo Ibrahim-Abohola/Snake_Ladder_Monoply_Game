@@ -79,6 +79,14 @@ void AddLadderAction::Execute()
 
 	if (!pGrid->IsOverLapping(pLadder)) {
 
+		if (!(startPos.IsValidCell() && endPos.IsValidCell())) {
+			pGrid->PrintErrorMessage("Error : invalid position for the ladder ");
+			return;
+		}
+		if (startPos.HCell() != endPos.HCell() || startPos.VCell() <= endPos.VCell()) {
+			pGrid->PrintErrorMessage("Error : invalid position for the ladder ");
+			return;
+		}
 		// Add the card object to the GameObject of its Cell:
 		bool added = pGrid->AddObjectToCell(pLadder);
 
@@ -88,11 +96,14 @@ void AddLadderAction::Execute()
 		{
 			// Print an appropriate message
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			delete pLadder; //delete the object that wasn't added
 		}
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
 
 	}
-	else
-		pGrid->PrintErrorMessage("Error: Cannot draw the sanke because it overlapps with anthor object ! Click to continue ...");
+	else {
+		pGrid->PrintErrorMessage("Error: Cannot draw the ladder because it overlapps with anthor object ! Click to continue ...");
+		delete pLadder; //delete the object that wasn't added
+	}
 
 }

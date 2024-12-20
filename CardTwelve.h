@@ -39,6 +39,9 @@ public:
 	static int GetCardPrice(); //getter for cardprice
 	static Player* SetOwner(Player*);  //setter for the owner
 	static Player* GetOwner();  //getter for the owner of the card
+	static void SetLoaded();   //to set the loading action
+	static void SetSaved();   //to set the saving action
+
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: Cell to be moved to
 

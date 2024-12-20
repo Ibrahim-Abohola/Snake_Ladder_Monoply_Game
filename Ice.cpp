@@ -21,8 +21,11 @@ void Ice::ReadAttack() {
 		int number;
 		number = pIn->GetInteger(pOut);
 		while (number < 0 || number > 3 || number == Attacker->GetPlayerNum()) {  //validation on player number
+		number = pIn->GetInteger(pOut);
 			pOut->PrintMessage("You entered an invalid number, please enter a correct number (from 0 to 3) excluding your number");
+			number = pIn->GetInteger(pOut);
 		}
+		pGrid->PrintErrorMessage("");
 		AttackedPlayer = pGrid->GetPlayerWithNumber(number); //pointer to the attacked player
 
 	}
@@ -34,5 +37,4 @@ void Ice::ExcuteAttack() {
 	ReadAttack();
 
 	AttackedPlayer->SetSkipped(true); //set the skip bool
-	AttackedPlayer->IsSkipped(pGrid);  //makes the player skip the next turn
 }

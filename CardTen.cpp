@@ -4,8 +4,8 @@
 int CardTen::CardPrice = 0;
 int CardTen::Fees = 0;
 Player* CardTen::CardOwner = NULL;
-int CardTen::Saved = 0;
 int CardTen::Loaded = 0;
+int CardTen::Saved = 0;
 
 CardTen::CardTen(const CellPosition& pos) : Station(pos) // set the cell position of the card
 {
@@ -30,6 +30,14 @@ Card* CardTen::CopyCard(CellPosition cPos)
 	return pCard;
 }
 
+void CardTen::SetLoaded() {
+	Loaded = 0;
+}
+
+void CardTen::SetSaved() {
+	Saved = 0;
+}
+
 
 void CardTen::Save(ofstream& OutFile) {
 	//special card 
@@ -43,6 +51,7 @@ void CardTen::Save(ofstream& OutFile) {
 		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
 
 }
+
 
 void CardTen::Load(ifstream& InFile) {
 	int price, pos, fees;

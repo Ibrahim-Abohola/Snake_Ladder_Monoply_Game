@@ -29,9 +29,10 @@ class CardEleven : public Station
 	static Player* CardOwner; //pointer to card owner
 	static int Saved;   //to make that the price and fees only saved once
 	static int Loaded;  //to make sure that the price and fees only loaded once
+	
 
 public:
-	CardEleven(const CellPosition& pos); // A Constructor takes card position
+	CardEleven(const CellPosition & pos); // A Constructor takes card position
 
 	static void SetCardPrice(int);  //setter for the cardprice
 	static void SetFees(int);   //setter for the cardfees
@@ -40,6 +41,9 @@ public:
 	static int GetCardPrice(); //getter for cardprice
 	static Player* SetOwner(Player*);  //setter for the owner
 	static Player* GetOwner();  //getter for the owner of the card
+
+	static void SetLoaded();   //to set the loading action
+	static void SetSaved();   //to set the saving action
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: Cell to be moved to
 

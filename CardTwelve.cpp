@@ -5,9 +5,8 @@
 int CardTwelve::CardPrice = 0;
 int CardTwelve::Fees = 0;
 Player* CardTwelve::CardOwner = NULL;
-
-int CardTwelve::Saved = 0;
 int CardTwelve::Loaded = 0;
+int CardTwelve::Saved = 0;
 
 
 CardTwelve::CardTwelve(const CellPosition& pos) : Station(pos) // set the cell position of the card
@@ -34,6 +33,15 @@ Card* CardTwelve::CopyCard(CellPosition cPos)
 	return pCard;
 }
 
+void CardTwelve::SetLoaded() {
+	Loaded = 0;
+}
+
+void CardTwelve::SetSaved() {
+	Saved = 0;
+}
+
+
 
 void CardTwelve::Save(ofstream& OutFile) {
 	//special card 
@@ -47,6 +55,7 @@ void CardTwelve::Save(ofstream& OutFile) {
 		OutFile << GetCardNumber() << " " << position.GetCellNum() << endl;
 
 }
+
 
 void CardTwelve::Load(ifstream& InFile) {
 	int price, pos, fees;

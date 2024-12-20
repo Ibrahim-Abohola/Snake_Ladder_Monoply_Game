@@ -20,5 +20,6 @@ void Lightning::ReadAttack() {
 void Lightning::ExcuteAttack() {
 	//excutes the attack by preventing the attacked player from rolling the dice the next turn
 	ReadAttack();
+	pGrid->PrintErrorMessage("Other players will lose 20 coins from thier wallet");
 	pGrid->LightningAttack(Attacker);  //calls the lighting function in each player thar deducts 20 from thier wallet
 }

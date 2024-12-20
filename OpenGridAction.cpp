@@ -18,6 +18,7 @@
 #include "CardEleven.h"
 #include "CardTwelve.h"
 #include "CardThrteen.h"
+#include "Station.h"
 
 
 
@@ -36,7 +37,7 @@ void OpenGridAction::ReadActionParameters() {
 	Input* pIn = pManager->GetGrid()->GetInput();
 	Output* pOut = pManager->GetGrid()->GetOutput();
 	//read the open action parameters
-	pOut->PrintMessage("Enter the file name that you want to load the grid from");
+	pOut->PrintMessage("Enter the file name that you want to load the grid from ");
 	FileName = pIn->GetSrting(pOut);
 	pOut->ClearStatusBar();
 	FileName += ".txt";
@@ -58,6 +59,11 @@ void OpenGridAction::Execute() {
 	}
 
 	pGrid->ClearGrid();  //clears the grid from the previous design to laod the saved one
+	///set the Loaded static variable befor loading to load correctly in case if the user loaded multiple times at the same run for the game
+	CardTen::SetLoaded();
+	CardEleven::SetLoaded();
+	CardTwelve::SetLoaded();
+	CardThrteen::SetLoaded();
 	pGrid->GetOutput()->ClearGridArea();  //redraws the grid again
 
 

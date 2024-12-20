@@ -9,6 +9,8 @@ Station::~Station(void)
 {
 }
 
+
+
 bool Station::IsBought(Player* CardOwner) {
 	if (CardOwner)
 		return true;
@@ -18,7 +20,7 @@ bool Station::IsBought(Player* CardOwner) {
 void Station::BuyStation(Grid* pGrid, Player* pPlayer,int CardPrice, Player * & Owner) {
 	if (!IsBought(Owner)) {  
 		int x, y;
-		pGrid->PrintErrorMessage("Do you wish to buy this Station and own all cards with the same type in the grid for price = " + to_string(CardPrice) + " (y / n)");
+		pGrid->GetOutput()->PrintMessage("Do you wish to buy this Station and own all cards with the same type in the grid for price = " + to_string(CardPrice) + " (y / n)");
 		string buy = pGrid->GetInput()->GetSrting(pGrid->GetOutput());
 		if (buy == "y" || buy =="Y") {
 			if (pPlayer->GetWallet() >= CardPrice)
@@ -59,11 +61,9 @@ void Station::PayStationFees(Grid * pGrid,Player *& pPlayer,int Fees, Player * &
 	}
 	else if (pPlayer == Owner) {
 		pGrid->PrintErrorMessage("You are the owner of the card thus no fees to pay ....click to continue ");
-		pGrid->GetInput()->GetPointClicked(x, y);
 	}
 	else {
 		pGrid->PrintErrorMessage("There is no owner for the station yet thus no fees to pay ...........click to continue");
-		pGrid->GetInput()->GetPointClicked(x, y);
 	}
 
 }

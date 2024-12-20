@@ -4,7 +4,12 @@
 #include "Output.h"
 #include "Ladder.h"
 #include "Snake.h"
-#include "Card.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+#include "CardThrteen.h"
+#include "Station.h"
+
 
 
 
@@ -36,6 +41,12 @@ void SaveGridAction::Execute() {
 		pGrid->PrintErrorMessage("Error, couldn't open the file");
 		return;
 	}
+
+///set the saved static variable befor saving to save correctly in case if previous save happend at the same run for the game
+	CardTen::SetSaved();
+	CardEleven::SetSaved();
+	CardTwelve::SetSaved();
+	CardThrteen::SetSaved();
 
 	pGrid->SaveAllLadders(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any ladders first
 	pGrid->SaveAllSnakes(SaveGrid); //call the function save in the grid to loop on the entire cell list and save any snakes after the ladders

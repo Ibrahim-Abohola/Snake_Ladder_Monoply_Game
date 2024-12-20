@@ -51,12 +51,17 @@ void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 	// 2-Move the player forward to the start of the next snake. (If no snakes ahead, do nothing)
 	pGrid->PrintErrorMessage("You will be transfered to the start of the next snake if exist");
 	Snake* s= pGrid->GetNextSnake((pPlayer->GetCell())->GetCellPosition());
-	pGrid->UpdatePlayerCell(pPlayer, s->GetEndPosition());
+	if (s) {
+		pGrid->UpdatePlayerCell(pPlayer, s->GetEndPosition());
+		if (pPlayer->GetCell()->GetGameObject())
+		{
+			pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
+			pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
+		}
+	}
+	else
+		pGrid->PrintErrorMessage("Oops! no snakes ahead");
 
 	//apply the effect of the game object in the distination cell if exist
-	if (pPlayer->GetCell()->GetGameObject())
-	{
-		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
-		pPlayer->SetstepCount(pPlayer->GetCell()->GetCellPosition().GetCellNum());
-	}
+	
 }

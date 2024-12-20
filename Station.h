@@ -20,7 +20,7 @@ ii.Fees to pay by passing players. */
 
 class Station : public Card
 {
-
+	
 public:
 	Station(const CellPosition& pos); // A Constructor takes card position
 
@@ -28,6 +28,8 @@ public:
 	void BuyStation(Grid* pGrid, Player* pPlayer,int CardPrice,Player *& Owner); //Function that handles all operations regarding buying the card and it has same implementation across all drived classes 
 	void PayStationFees(Grid* pGrid, Player *& pPlayer, int Fees, Player *& Owner); //Function that handles the fees that must be paid to the owner of the card and it has same implementation across all drived classes
 	bool IsBought(Player* CardOwner);  //Function the checks if the card is bought or not
+	
+
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: Cell to be moved to
 

@@ -239,11 +239,12 @@ void Grid::PrintErrorMessage(string msg)
 	pOut->ClearStatusBar();
 }
 
-void Grid::LightningAttack(Player* attacker) {
+void Grid::LightningAttack(Player * attacker) {
 	for (int i = 0;i < MaxPlayerCount;i++) {
 		if (PlayerList[i] != attacker)
 			PlayerList[i]->IsLightned(this);
 	}
+	UpdateInterface();
 }
 
 
@@ -301,11 +302,16 @@ void Grid::SaveAllCards(ofstream& OutFile) {
 
 void Grid::ClearGrid() {
 	
-	for (int i = NumVerticalCells - 1;i >=0;i--) {
+	int c = 0;
+	for (int i =0;i < NumVerticalCells;i++) {
 		for (int j = 0;j < NumHorizontalCells;j++) {
-			RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+			if (CellList[i][j]->GetGameObject()) {
+				RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+				c++;
+			}
 		}
 	}
+	c++;
 	UpdateInterface();
 }
 
