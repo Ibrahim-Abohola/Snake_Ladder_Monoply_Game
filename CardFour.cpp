@@ -52,6 +52,11 @@ void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You will be transfered to the start of the next snake if exist");
 	Snake* s= pGrid->GetNextSnake((pPlayer->GetCell())->GetCellPosition());
 	if (s) {
+		int x, y;
+		pGrid->UpdatePlayerCell(pPlayer, s->GetPosition());
+		pGrid->PrintErrorMessage("You have reached a snake. Click to continue ...");
+		pGrid->GetInput()->GetPointClicked(x, y);
+		pGrid->GetOutput()->ClearStatusBar();
 		pGrid->UpdatePlayerCell(pPlayer, s->GetEndPosition());
 		if (pPlayer->GetCell()->GetGameObject())
 		{

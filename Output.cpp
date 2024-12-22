@@ -32,21 +32,20 @@ Output::Output()
 	UI.StatusBarColor = LIGHTGRAY;
 
 	// Line Colors of the borders of each cell
-	UI.GridLineColor = WHITE;
-
+	UI.GridLineColor = DARKBLUE;//WHITE;
 	// Cell Color if Empty & Cell Number Font & Color
-	UI.CellColor_NoCard = LIGHTSLATEBLUE;
+	UI.CellColor_NoCard = DARKTURQUOISE;//LIGHTSLATEBLUE;
 	UI.CellNumFont = 13;
 	UI.CellNumColor = UI.GridLineColor;
 
 	// Cell Color if Has Card & CARD Number Font & Color
-	UI.CellColor_HasCard = SALMON;
+	UI.CellColor_HasCard = ORANGE;//SALMON;
 	UI.CardNumFont = 35;
 	UI.CardNumColor = WHITE;
 
 	// Ladder Line Width and Color
 	UI.LadderlineWidth = 6;
-	UI.LadderColor = DARKSLATEBLUE;
+	UI.LadderColor = MIDNIGHTBLUE;//SADDLEBROWN;
 
 	// The X and Y Offsets of the Space BEFORE Drawing the Ladder (offset from the start X and Y of the Cell)
 	UI.LadderXOffset = (UI.CellWidth - 2 * UI.LadderlineWidth) / 5;
@@ -57,10 +56,10 @@ Output::Output()
 	UI.SnakeColor = FIREBRICK;
 
 	// Colors of the 4 Players
-	UI.PlayerColors[0] = GOLD;
-	UI.PlayerColors[1] = DARKSLATEBLUE;
-	UI.PlayerColors[2] = KHAKI;
-	UI.PlayerColors[3] = CHOCOLATE;
+	UI.PlayerColors[0] = YELLOW;
+	UI.PlayerColors[1] = BLACK;
+	UI.PlayerColors[2] = DARKBLUE;//KHAKI;
+	UI.PlayerColors[3] = DARKGREEN;
 
 	// Create the output window
 	pWind = CreateWind(UI.width + 15, UI.height, UI.wx, UI.wy);

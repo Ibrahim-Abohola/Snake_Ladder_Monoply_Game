@@ -48,6 +48,7 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 
 	pGrid->GetOutput()->PrintMessage("You have reached a ladder. Click to continue ...");
 	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
 	// 2- Apply the ladder's effect by moving the player to the endCellPos	
 	//    Review the "pGrid" functions and decide which function can be used for that
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);

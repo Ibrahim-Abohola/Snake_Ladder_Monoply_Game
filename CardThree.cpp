@@ -49,6 +49,11 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You will be transfered to the start of the next ladder if exist");
 	Ladder  * L = pGrid->GetNextLadder((pPlayer->GetCell())->GetCellPosition());
 	if (L) {
+		int x, y;
+		pGrid->UpdatePlayerCell(pPlayer, L->GetPosition());
+		pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
+		pGrid->GetInput()->GetPointClicked(x, y);
+		pGrid->GetOutput()->ClearStatusBar();
 		pGrid->UpdatePlayerCell(pPlayer, L->GetEndPosition());
 		if (pPlayer->GetCell()->GetGameObject())
 		{

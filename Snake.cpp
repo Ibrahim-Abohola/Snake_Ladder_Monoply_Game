@@ -19,6 +19,7 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Print a message "You have reached a snake. Click to continue ..." and wait mouse click
 	pGrid->GetOutput()->PrintMessage("You have reached a snake. Click to continue ...");
 	pGrid->GetInput()->GetPointClicked(x, y);
+	pGrid->GetOutput()->ClearStatusBar();
 	// 2- Apply the snake's effect by moving the player to the endCellPos
 	//    Review the "pGrid" functions and decide which function can be used for that
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
