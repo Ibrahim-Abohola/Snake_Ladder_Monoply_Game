@@ -50,7 +50,7 @@ void AddSnakeAction::ReadActionParameters()
 	startPos = pIn->GetCellClicked();
 	while ((!startPos.IsValidCell()) || startPos.GetCellNum() == 99 || startPos.GetCellNum() == 1) {
 		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
-		endPos = pIn->GetCellClicked();
+		startPos = pIn->GetCellClicked();
 	}
 	// Read the endPos parameter
 	pOut->PrintMessage("New Snake: Click on its End Cell ...");
