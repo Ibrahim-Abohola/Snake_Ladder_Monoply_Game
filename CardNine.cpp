@@ -39,11 +39,6 @@ void CardNine::EditCard(Grid* pGrid) {
 }
 
 
-void CardNine::SetCellPos(CellPosition& c) {
-	if (c.IsValidCell())
-		CellPos = c;
-}
-
 
 void CardNine::ReadCardParameters(Grid* pGrid)
 {
@@ -54,7 +49,11 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	// 2- Read an Integer from the user using the Input class and set the Cellpos parameter with it
 	//  print a descriptive message to the user 
 	pOut->PrintMessage("Enter the new Cell pos that the player should be moved to ");
-	SetCellPos(pIn->GetCellClicked());
+	CellPos = pIn->GetCellClicked();
+	while ((!CellPos.IsValidCell()) || CellPos.GetCellNum() == 1 || CellPos.GetCellNum() == 99) {
+		pOut->PrintMessage("Invalid cell position, please click on a valid cell postion ");
+		CellPos = pIn->GetCellClicked();
+	}
 
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();

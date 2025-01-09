@@ -1,6 +1,8 @@
 #include "Snake.h"
 #include"Ladder.h"
 #include <fstream>
+
+
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 	this->endCellPos = endCellPos;
@@ -32,7 +34,7 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 	}
 }
 
-void Snake::Save(ofstream& OutFile)
+void Snake::Save(ofstream & OutFile)
 {
 	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;  //writing ladder information into the file
 

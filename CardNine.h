@@ -17,8 +17,7 @@ class CardNine : public Card
 
 public:
 	CardNine(const CellPosition& pos); // A Constructor takes card position
-	void SetCellPos(CellPosition& c);
-
+	
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: Cell to be moved to
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardNine on the passed Player

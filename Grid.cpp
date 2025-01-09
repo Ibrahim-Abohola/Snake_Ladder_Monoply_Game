@@ -302,16 +302,13 @@ void Grid::SaveAllCards(ofstream& OutFile) {
 
 void Grid::ClearGrid() {
 	
-	int c = 0;
 	for (int i =0;i < NumVerticalCells;i++) {
 		for (int j = 0;j < NumHorizontalCells;j++) {
 			if (CellList[i][j]->GetGameObject()) {
 				RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
-				c++;
 			}
 		}
 	}
-	c++;
 	UpdateInterface();
 }
 

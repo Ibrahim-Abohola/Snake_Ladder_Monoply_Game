@@ -52,7 +52,7 @@ void CutCardAction::Execute()
 			pGrid->SetClipboard(NULL);
 			pGrid->RemoveObjectFromCell(CardToCopyPos);
 			pGrid->UpdateInterface();
-			pGrid->PrintErrorMessage("Cut sucsessfully");
+			pGrid->PrintErrorMessage("Cut successfully");
 		}
 		else {
 			pGrid->PrintErrorMessage("Error: Cell already has an object");
